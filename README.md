@@ -10,6 +10,7 @@ some interesting toolkits
 - 电话簿
 - 二维码
 - base64转文件
+- 公众号文章转图片
 
 # 临时工具
 - 思维导图格式转换工具
