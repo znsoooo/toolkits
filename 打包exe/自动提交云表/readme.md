@@ -11,7 +11,7 @@
 - 默认不更改和输入新值修改的写法 -- new = input(hint) or origin
 - 多电脑拷贝自动辨认主机发生变化(通过获取本机MAC地址)
 
-## cmd运行模式
+## cmd
 - 避免pyinstaller打包成debug模式时产生报错
 - 避免debug运行时程序运行结束自动退出(Press Enter to finish)
 - pprint设置延时和空行增加程序调试运行时的段落感
