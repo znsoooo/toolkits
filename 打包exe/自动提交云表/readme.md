@@ -12,6 +12,6 @@
 - 多电脑拷贝自动辨认主机发生变化(通过获取本机MAC地址)
 
 ## debug运行
-- 避免pyinstaller打包成debug模式时产生报错
+- 避免pyinstaller打包成debug模式时产生报错(-d noarchive)
 - 避免debug运行时程序运行结束自动退出(Press Enter to finish)
 - pprint设置延时和空行增加程序调试运行时的段落感
