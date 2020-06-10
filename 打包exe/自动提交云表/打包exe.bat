@@ -1,2 +1,2 @@
-pyinstaller -d -F main.py
+pyinstaller -d noarchive -F main.py
 pause
