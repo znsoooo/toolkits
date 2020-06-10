@@ -11,7 +11,7 @@
 # 多电脑拷贝自动辨认主机发生变化(通过获取本机MAC地址)
 
 # debug打包:
-# 避免pyinstaller打包成debug模式时产生报错
+# 避免pyinstaller打包成debug模式时产生报错(-d noarchive)
 # 避免debug运行时程序运行结束自动退出(Press Enter to finish)
 # pprint设置延时和空行增加程序调试运行时的段落感
 
@@ -94,16 +94,6 @@ def AnalysisPageJson(data):
 #---------------------------------------------------------------------------
 
 
-def debug_init():  # 避免pyinstaller打包成debug模式时产生的报错
-    import re
-    import uuid
-    import getpass
-
-    import _bootlocale
-    import encodings.idna
-    import stringprep
-
-
 def GetDefault():
     import re
     import uuid
@@ -166,8 +156,6 @@ def pprint(s):
 
 def main():
     # 启动
-    debug_init()
-    pprint('...\n' * 20) # 刷屏console
     pprint('程序启动')
     pprint('程序实现：\n复制最后一次填写的《十二所员工月度保密自查表》，提交新一月的自查表。')
 
