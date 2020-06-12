@@ -12,4 +12,4 @@
 # 配合Everything:
 
 - 输入神秘代码，可以匹配指定文件格式、不包含标密文本、不是临时文件的所有文件，复制到窗口中后进行进一步操作：
-  > nopath:<ext:doc;ppt;xls;pps;docx;pptx;xlsx;pdf !公开 !非密 !内部 !秘密 !机密 !startwith:~>
+- > nopath:<ext:doc;ppt;xls;pps;docx;pptx;xlsx;pdf !公开 !非密 !内部 !秘密 !机密 !startwith:~>
