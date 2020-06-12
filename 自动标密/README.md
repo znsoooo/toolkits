@@ -8,6 +8,8 @@
 
 - 日志: 本地产生log文件，误操作后可以回滚（配合使用手动模式）
 
+
 # 配合Everything
-可以使用Everything，在搜索窗口输入神秘代码（不含引号）：“nopath:<ext:doc;ppt;xls;pps;docx;pptx;xlsx;pdf !公开 !非密 !内部 !秘密 !机密 !startwith:~>”
-_（注，公式含义：不匹配路径、匹配指定文件后缀名、文件名中不包含标密文本、不是以~开头的临时文件。可以根据个人需要调整公式，按照希望的规则筛选文件）_
+
+输入神秘代码，可以匹配指定文件格式、不包含标密文本、不是临时文件的所有文件，复制到窗口中后进行进一步操作：
+> nopath:<ext:doc;ppt;xls;pps;docx;pptx;xlsx;pdf !公开 !非密 !内部 !秘密 !机密 !startwith:~>
