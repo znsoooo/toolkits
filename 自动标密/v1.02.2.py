@@ -29,8 +29,6 @@
 
 
 # TODO
-# 管理员权限下创建的log文件是否还能修读取？
-
 # 遍历文件夹(仅前1000个文件)
 # '非密'和'非秘'
 # 横向进度条
@@ -148,8 +146,8 @@ class myPanel(tkinter.Tk):
         box1 = tkinter.Frame(box)
         box2 = tkinter.Frame(box)
 
-        lab1 = tkinter.Label(box1, text='文件完整路径：')
-        lab2 = tkinter.Label(box2, text='生成修改路径：')
+        lab1 = tkinter.Label(box1, text='原始路径：')
+        lab2 = tkinter.Label(box2, text='修改路径：')
         self.tex1 = ScrolledText(box1, width=0, height=0) # width/height=0保证窗口拉伸时比例始终为1
         self.tex2 = ScrolledText(box2, width=0, height=0)
         lab1.pack(side='top', anchor='w')
@@ -175,13 +173,13 @@ class myPanel(tkinter.Tk):
         box.pack(side='top', fill='both', expand=True)
         box1.pack(side='left', fill='both', expand=True)
         box2.pack(side='left', fill='both', expand=True)
-        btn5.pack(side='right')
-        btn4.pack(side='right')
-        btn3.pack(side='right')
-        btn2.pack(side='right')
-        btn1.pack(side='right')
+        btn5.pack(side='right', fill='y')
+        btn4.pack(side='right', fill='y')
+        btn3.pack(side='right', fill='y')
+        btn2.pack(side='right', fill='y')
+        btn1.pack(side='right', fill='y')
 
-        self.tex2.config(bg='#FFFFFF') # 有时系统设置会覆盖默认的白色(比如护眼绿色)
+        self.tex1.config(bg='#FFFFFF') # 有时系统设置会覆盖默认的白色(比如护眼绿色)
         self.tex2.config(state='disabled', bg='#F0F0F0') # 禁止编辑
 
         setCenter(self)
