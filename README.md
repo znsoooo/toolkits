@@ -19,6 +19,6 @@ some interesting toolkits
 ## About work
 - [ ] 机械臂模拟
 - [x] 文件名自动标密
-- [ ] 自动格式化文件名
-- [ ] 周报统计
+- [x] 自动格式化文件名
+- [x] 周报统计
 - [x] cmd流程控制
