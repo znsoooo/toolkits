@@ -3,6 +3,7 @@ some interesting toolkits
 
 ## todolist
 - [ ] 电话簿(小程序和HTML)
+- [ ] 文件转二维码视频（非qr）
 - [ ] 视频提取二维码
 - [x] 图片压入信息
 - [ ] 读取Excel的格式（不用pywin32）
