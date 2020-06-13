@@ -1,0 +1,1826 @@
+<opml version="1.0">
+    <body>
+        <outline text="主案设计">
+            <outline text="Day01">
+                <outline text="www.cadedu.top">
+                </outline>
+            </outline>
+            <outline text="Day02">
+                <outline text="CAD界面">
+                    <outline text="1、标题栏">
+                        <outline text="1、版本信息">
+                        </outline>
+                        <outline text="2、文件格式.dwg">
+                        </outline>
+                        <outline text="3、新建">
+                        </outline>
+                        <outline text="4、打开">
+                        </outline>
+                        <outline text="5、保存">
+                        </outline>
+                        <outline text="6、另存为">
+                        </outline>
+                        <outline text="7、打印">
+                        </outline>
+                        <outline text="8、放弃">
+                        </outline>
+                    </outline>
+                    <outline text="2、菜单栏">
+                        <outline text="软件中所有的命令">
+                        </outline>
+                    </outline>
+                    <outline text="3、图标区">
+                        <outline text="如何设置工作空间">
+                            <outline text="CAD软件右下方-切换工作空间-autoCAD经典模式">
+                                <outline text="&lt;=2016版本">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="如何寻找图标">
+                            <outline text="鼠标放在任意图标最前方右键-寻找要使用的面板">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="4、绘图区">
+                        <outline text="尽量让绘图区显示为最大">
+                        </outline>
+                    </outline>
+                    <outline text="5、命令提示栏">
+                        <outline text="人与计算机交流平台">
+                        </outline>
+                    </outline>
+                    <outline text="6、状态栏">
+                    </outline>
+                </outline>
+                <outline text="绘图面板">
+                    <outline text="1、直线">
+                        <outline text="L">
+                        </outline>
+                        <outline text="1、如何确定（发送）">
+                            <outline text="1、空格">
+                            </outline>
+                            <outline text="2、回车">
+                            </outline>
+                            <outline text="3、鼠标右键">
+                            </outline>
+                        </outline>
+                        <outline text="2、如何结束绘制直线">
+                            <outline text="ESC">
+                            </outline>
+                        </outline>
+                        <outline text="3、直线绘制错误，如何返回">
+                            <outline text="1、命令提示栏中直接点击放弃（U）">
+                            </outline>
+                            <outline text="2、CTRL+Z">
+                            </outline>
+                        </outline>
+                        <outline text="4、如何闭合直线">
+                            <outline text="命令提示栏中点击闭合（C）">
+                            </outline>
+                        </outline>
+                        <outline text="5、如何绘制水平垂直的直线">
+                            <outline text="F8（正交开关）">
+                            </outline>
+                        </outline>
+                        <outline text="6、如何绘制带有尺寸的直线">
+                            <outline text="直接输入数值-确认">
+                            </outline>
+                        </outline>
+                        <outline text="7、如何删除直线">
+                            <outline text="选中要删除的直线-Delate">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="2、构造线">
+                        <outline text="XL">
+                        </outline>
+                        <outline text="特点">
+                            <outline text="两端无限延长的线">
+                            </outline>
+                        </outline>
+                        <outline text="作用">
+                            <outline text="辅助线">
+                            </outline>
+                        </outline>
+                        <outline text="1、如何绘制水平垂直的构造线">
+                            <outline text="XL-确认-命令提示栏中点击水平或垂直-图纸中进行绘制">
+                            </outline>
+                        </outline>
+                        <outline text="2、如何绘制带有角度的构造线">
+                            <outline text="XL-确认-命令提示栏中点击角度-输入角度-确认-图纸中进行绘制">
+                            </outline>
+                        </outline>
+                        <outline text="3、如何通过构造线平分角度">
+                            <outline text="XL-确认-命令提示栏中点击二等分-指定顶点-指定起点-指定端点-ESC">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="3、多段线">
+                        <outline text="PL">
+                        </outline>
+                        <outline text="多段线使用方法和直线一致">
+                        </outline>
+                        <outline text="如何选择物体">
+                            <outline text="1、点选式">
+                                <outline text="用鼠标直接点击物体">
+                                </outline>
+                            </outline>
+                            <outline text="2、框选式">
+                                <outline text="从左向右选择-只有全部在框选区域之内的物体才能被选择">
+                                </outline>
+                            </outline>
+                            <outline text="3、穿越式选择">
+                                <outline text="从右向左选择-只要碰到物体就可以被选择">
+                                </outline>
+                            </outline>
+                            <outline text="4、全选">
+                                <outline text="Ctrl+A">
+                                </outline>
+                            </outline>
+                            <outline text="5、加选">
+                                <outline text="直接用鼠标点击要加选的物体">
+                                </outline>
+                            </outline>
+                            <outline text="6、减选">
+                                <outline text="shift+点击不想要的物体">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="多段线和直线区别">
+                            <outline text="1、直线每点击一点都会断开">
+                            </outline>
+                            <outline text="2、多段线是连续不断的直线">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="4、多边形">
+                        <outline text="POL">
+                        </outline>
+                        <outline text="POL-确认-输入多边形边数-指定中心-内接于圆/外切于圆-输入半径-确认">
+                        </outline>
+                    </outline>
+                    <outline text="5、矩形">
+                        <outline text="REC">
+                        </outline>
+                        <outline text="REC-确认-点击第一点拖拽-输入@-输入水平方向长度-逗号，-输入垂直方向长度-确认">
+                        </outline>
+                    </outline>
+                    <outline text="6、圆弧">
+                        <outline text="A">
+                        </outline>
+                        <outline text="1、三点确定圆弧">
+                        </outline>
+                        <outline text="2、起点-端点-半径">
+                            <outline text="菜单栏-绘图-圆弧-起、端、半">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="7、圆">
+                        <outline text="C">
+                        </outline>
+                        <outline text="1、指定圆心-输入半径">
+                        </outline>
+                        <outline text="2、三点画圆">
+                        </outline>
+                        <outline text="3、两点画圆">
+                        </outline>
+                        <outline text="4、相切、相切、半径">
+                        </outline>
+                        <outline text="5、相切、相切、相切">
+                        </outline>
+                    </outline>
+                    <outline text="8、修订云线">
+                        <outline text="1、如何修订云线弧长">
+                            <outline text="点击修订云线-命令提示栏点击弧长-指定最小弧长-指定最大弧长-确认">
+                            </outline>
+                        </outline>
+                        <outline text="2、如何将其他图形变成修订云线">
+                            <outline text="点击修订云线-命令提示栏点击对象-选择要修改的对象-是否反转造型">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="9、样条曲线">
+                        <outline text="SPL">
+                        </outline>
+                        <outline text="样条曲线在结束时直接点击确认">
+                        </outline>
+                    </outline>
+                    <outline text="10、椭圆">
+                        <outline text="EL">
+                        </outline>
+                        <outline text="先输入的是直径，后输入的是半径">
+                        </outline>
+                    </outline>
+                    <outline text="11、椭圆弧">
+                    </outline>
+                    <outline text="12、创建块">
+                        <outline text="B">
+                        </outline>
+                        <outline text="1、命名">
+                        </outline>
+                        <outline text="2、选择对象">
+                            <outline text="1、保留">
+                            </outline>
+                            <outline text="2、转换为块">
+                            </outline>
+                            <outline text="3、删除">
+                            </outline>
+                        </outline>
+                        <outline text="3、拾取点">
+                        </outline>
+                    </outline>
+                    <outline text="13、快速成块">
+                        <outline text="1、先选中要成块的对象">
+                        </outline>
+                        <outline text="2、Ctrl+X 剪切">
+                        </outline>
+                        <outline text="3、Ctrl+Shift+V 粘贴">
+                        </outline>
+                    </outline>
+                    <outline text="14、插入块">
+                        <outline text="I">
+                        </outline>
+                        <outline text="1、改变角度">
+                            <outline text="1、当输入的角度为正值时，逆时针旋转">
+                            </outline>
+                            <outline text="2、当输入的角度为负值时，顺时针旋转">
+                            </outline>
+                        </outline>
+                        <outline text="2、改变比例">
+                            <outline text="当输入的数值大于1时，物体放大；小于1时，物体缩小">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="15、写块">
+                        <outline text="W">
+                        </outline>
+                        <outline text="1、选择对象">
+                        </outline>
+                        <outline text="2、拾取点">
+                        </outline>
+                        <outline text="3、指定保存的位置">
+                            <outline text="1、位置">
+                            </outline>
+                            <outline text="2、命名">
+                            </outline>
+                        </outline>
+                        <outline text="4、写块与创建块的区别">
+                            <outline text="1、创建块只能用在本张图纸">
+                            </outline>
+                            <outline text="2、写块可以将图形进行保存，随时可以调用">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="16、点">
+                        <outline text="PO">
+                        </outline>
+                        <outline text="1、如何调整点的大小">
+                            <outline text="菜单栏-格式-点样式">
+                            </outline>
+                        </outline>
+                        <outline text="2、对象捕捉">
+                            <outline text="F3">
+                            </outline>
+                            <outline text="在对象捕捉上右击-设置">
+                                <outline text="1、端点">
+                                </outline>
+                                <outline text="2、中点">
+                                </outline>
+                                <outline text="3、圆心">
+                                </outline>
+                                <outline text="4、节点">
+                                </outline>
+                                <outline text="5、交叉">
+                                </outline>
+                                <outline text="6、垂足">
+                                </outline>
+                                <outline text="7、最近点">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="3、定数等分">
+                            <outline text="DIV">
+                            </outline>
+                            <outline text="DIV-确认-选择定数等分的对象-输入线段数目-确定">
+                            </outline>
+                        </outline>
+                        <outline text="4、定距等分">
+                            <outline text="菜单栏-绘图-点-定距等分">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="17、图案填充">
+                        <outline text="H">
+                        </outline>
+                        <outline text="条件">
+                            <outline text="填充区域必须闭合">
+                            </outline>
+                        </outline>
+                        <outline text="1、添加拾取点">
+                            <outline text="在待填充区域内点击一下-确认回来">
+                            </outline>
+                        </outline>
+                        <outline text="2、选择样例（要填充的图案）">
+                            <outline text="1、计算机自带样例">
+                            </outline>
+                            <outline text="2、自定义样例">
+                            </outline>
+                        </outline>
+                        <outline text="3、预览">
+                        </outline>
+                        <outline text="4、改比例">
+                        </outline>
+                        <outline text="5、改方向">
+                        </outline>
+                        <outline text="6、确定">
+                        </outline>
+                        <outline text="7、如何规定填充图案的大小">
+                            <outline text="1、样例-其它预定义-LINE">
+                            </outline>
+                            <outline text="2、将类型改为用户定义">
+                            </outline>
+                            <outline text="3、设置单双向">
+                            </outline>
+                            <outline text="4、设置间距">
+                            </outline>
+                        </outline>
+                        <outline text="8、填充图案和边界对齐">
+                            <outline text="1、图案填充原点-指定原点">
+                            </outline>
+                            <outline text="2、勾选默认边界范围">
+                                <outline text="1、左下">
+                                </outline>
+                                <outline text="2、左上">
+                                </outline>
+                                <outline text="3、正中">
+                                </outline>
+                                <outline text="4、右上">
+                                </outline>
+                                <outline text="5、右下">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="9、如何修改填充图案">
+                            <outline text="选中填充的图案-右键-图案填充编辑">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="18、渐变色填充">
+                        <outline text="H">
+                        </outline>
+                        <outline text="条件">
+                            <outline text="填充区域必须闭合">
+                            </outline>
+                        </outline>
+                        <outline text="渐变分类">
+                            <outline text="1、单色">
+                            </outline>
+                            <outline text="2、双色">
+                            </outline>
+                        </outline>
+                        <outline text="改方向">
+                        </outline>
+                    </outline>
+                    <outline text="19、多行文字">
+                        <outline text="T">
+                        </outline>
+                        <outline text="如何修改文字">
+                            <outline text="1、全选文字">
+                                <outline text="1、左击拖选">
+                                </outline>
+                                <outline text="2、Ctrl+A">
+                                </outline>
+                            </outline>
+                            <outline text="2、改字体">
+                                <outline text="尽量选用计算机自带字体">
+                                </outline>
+                            </outline>
+                            <outline text="3、改字号">
+                                <outline text="图形和文字都可以看清">
+                                </outline>
+                            </outline>
+                            <outline text="4、改颜色">
+                            </outline>
+                            <outline text="5、文字再次修改">
+                                <outline text="双击文字">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="背景遮罩">
+                            <outline text="选项-背景遮罩">
+                            </outline>
+                            <outline text="1、勾选使用背景遮罩">
+                            </outline>
+                            <outline text="2、边界偏移因子（1.5）">
+                            </outline>
+                            <outline text="3、勾选使用图形背景颜色">
+                            </outline>
+                        </outline>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="Day03">
+                <outline text="修改">
+                    <outline text="1、删除">
+                        <outline text="E">
+                        </outline>
+                        <outline text="1、选中物体-E确认">
+                        </outline>
+                        <outline text="2、选中物体-delete">
+                        </outline>
+                    </outline>
+                    <outline text="2、复制">
+                        <outline text="CO">
+                        </outline>
+                        <outline text="CO确认-选择要复制的物体-确认-指定基点-拖拽复制">
+                        </outline>
+                        <outline text="1、自由复制">
+                        </outline>
+                        <outline text="2、水平垂直复制">
+                            <outline text="F8">
+                            </outline>
+                        </outline>
+                        <outline text="3、带有尺寸的复制">
+                            <outline text="直接输入尺寸">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="3、镜像">
+                        <outline text="MI">
+                        </outline>
+                        <outline text="MI确认-选择要镜像的物体-确认-指定镜像线的第一点-指定镜像线的第二点-是否删除原对象（N/Y）">
+                        </outline>
+                    </outline>
+                    <outline text="4、偏移">
+                        <outline text="O">
+                        </outline>
+                        <outline text="O确认-输入偏移距离-确认-选择偏移对象-拖拽偏移">
+                        </outline>
+                    </outline>
+                    <outline text="5、移动">
+                        <outline text="M">
+                        </outline>
+                        <outline text="M确认-选择移动对象-确认-指定基点-拖拽移动">
+                        </outline>
+                    </outline>
+                    <outline text="6、旋转">
+                        <outline text="RO">
+                        </outline>
+                        <outline text="RO确认-选择要旋转的物体-确认-指定基点-输入旋转角度">
+                            <outline text="1、正值为逆时针">
+                            </outline>
+                            <outline text="2、负值为顺时针">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="7、缩放">
+                        <outline text="SC">
+                        </outline>
+                        <outline text="SC确认-选择要缩放的物体-确认-指定基点-输入比例因子">
+                            <outline text="1、大于1放大">
+                            </outline>
+                            <outline text="2、小于1缩小">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="8、拉伸">
+                        <outline text="S">
+                        </outline>
+                        <outline text="S确认-选择要拉伸的物体（必须穿越式选择要拉伸的点）-确认-指定基点-拖拽鼠标">
+                        </outline>
+                    </outline>
+                    <outline text="9、修剪">
+                        <outline text="TR">
+                        </outline>
+                        <outline text="条件">
+                            <outline text="线与线有交叉才可以修剪">
+                            </outline>
+                        </outline>
+                        <outline text="TR连续两次确认-选择要修剪的线段">
+                        </outline>
+                    </outline>
+                    <outline text="10、延伸">
+                        <outline text="EX">
+                        </outline>
+                        <outline text="条件">
+                            <outline text="1、必须有阻挡的线">
+                            </outline>
+                            <outline text="2、延伸线和阻挡线必须同时显示">
+                            </outline>
+                        </outline>
+                        <outline text="EX连续两次确认-选择要延伸的线">
+                        </outline>
+                    </outline>
+                    <outline text="11、合并">
+                        <outline text="J">
+                        </outline>
+                        <outline text="J确认-选择要合并的物体-确认">
+                        </outline>
+                    </outline>
+                    <outline text="12、倒圆角">
+                        <outline text="F">
+                        </outline>
+                        <outline text="F确认-命令提示栏点击半径-输入半径（半径为0时，倒角为直角）-点击要倒角的两个边">
+                        </outline>
+                    </outline>
+                    <outline text="13、分解">
+                        <outline text="X">
+                        </outline>
+                        <outline text="选中要分解的物体-X确认">
+                        </outline>
+                    </outline>
+                </outline>
+                <outline text="图纸缩放">
+                    <outline text="1、滚动鼠标滚轮，图纸放大缩小">
+                    </outline>
+                    <outline text="2、按住滚轮键，图纸平移">
+                    </outline>
+                </outline>
+                <outline text="案例综合练习">
+                    <outline text="1、石膏角线剖面">
+                        <outline text="无法直接直线勾出，采用辅助线作图">
+                            <outline text="矩形勾出最外围尺寸">
+                            </outline>
+                            <outline text="打散-偏移线段找出特殊尺寸点-形成辅助线">
+                            </outline>
+                            <outline text="根据辅助线勾画细节圆弧或斜线">
+                            </outline>
+                            <outline text="修剪多余线段">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="2、电视柜侧面图">
+                        <outline text="巧用图案填充绘制有规律重复图形">
+                        </outline>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="Day04">
+                <outline text="特性面板">
+                    <outline text="1、颜色">
+                    </outline>
+                    <outline text="2、线型">
+                        <outline text="1、如何增加线型">
+                            <outline text="线型控制-点击其它-线型管理器-加载（选择需要的线型）-确定">
+                            </outline>
+                        </outline>
+                        <outline text="2、如何调整线型比例">
+                            <outline text="1、线型控制中-将线型切换为默认（第一个线型）">
+                            </outline>
+                            <outline text="2、线型控制中-点击其它-打开线型管理器-当前对象的缩放比例">
+                            </outline>
+                            <outline text="3、特性匹配">
+                                <outline text="MA">
+                                </outline>
+                                <outline text="MA确认-选择源对象（带有特性的线）-选择目标对象（要修改的线）">
+                                </outline>
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="3、线宽">
+                        <outline text="注意">
+                            <outline text="状态栏中-线宽显示开关是否打开">
+                            </outline>
+                        </outline>
+                    </outline>
+                </outline>
+                <outline text="状态栏">
+                    <outline text="1、栅格">
+                        <outline text="F7">
+                        </outline>
+                        <outline text="图纸背景上的网格">
+                        </outline>
+                    </outline>
+                    <outline text="2、捕捉">
+                        <outline text="F9">
+                        </outline>
+                        <outline text="捕捉栅格上的点（如果出现鼠标不受控制，关闭捕捉）">
+                        </outline>
+                    </outline>
+                    <outline text="3、正交">
+                        <outline text="F8">
+                        </outline>
+                    </outline>
+                    <outline text="4、极轴（角度捕捉）">
+                        <outline text="F10">
+                        </outline>
+                        <outline text="如何设置增量角">
+                            <outline text="在极轴的图标上右键-点击设置-设置增量角">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="5、对象捕捉">
+                        <outline text="F3">
+                        </outline>
+                        <outline text="1、对象捕捉与捕捉的区别">
+                            <outline text="1、捕捉栅格">
+                            </outline>
+                            <outline text="2、对象捕捉是捕捉物体身上的点">
+                            </outline>
+                        </outline>
+                        <outline text="2、设置对象捕捉的内容">
+                        </outline>
+                    </outline>
+                    <outline text="6、对象追踪">
+                        <outline text="F11">
+                        </outline>
+                        <outline text="免去辅助线">
+                        </outline>
+                    </outline>
+                    <outline text="7、允许动态">
+                        <outline text="建议打开">
+                        </outline>
+                    </outline>
+                    <outline text="8、动态输入">
+                        <outline text="建议打开">
+                        </outline>
+                    </outline>
+                    <outline text="9、线宽显示">
+                        <outline text="显示线的粗细">
+                        </outline>
+                    </outline>
+                </outline>
+                <outline text="缩放工具">
+                    <outline text="1、鼠标">
+                        <outline text="1、滚动鼠标滚轮，图纸放大缩小">
+                        </outline>
+                        <outline text="2、按住鼠标滚轮，图纸平移">
+                        </outline>
+                        <outline text="3、双击鼠标滚轮，图纸内图形充屏放大">
+                        </outline>
+                    </outline>
+                    <outline text="2、键盘">
+                        <outline text="1、Z确认A确认，图纸充屏放大">
+                        </outline>
+                        <outline text="2、Z确认，配合鼠标框选，局部放大">
+                        </outline>
+                    </outline>
+                </outline>
+                <outline text="如何设置图纸大小">
+                    <outline text="1、菜单栏-格式-图形界限">
+                    </outline>
+                    <outline text="2、指定左下角点的坐标-0确认">
+                    </outline>
+                    <outline text="3、指定右上角点的坐标-例6000,4000确认（需要比所画图大）">
+                    </outline>
+                    <outline text="4、图纸充屏（Z确认A确认）">
+                    </outline>
+                    <outline text="5、不要反复设定，软件易出错，建议重启软件">
+                    </outline>
+                </outline>
+                <outline text="立面图绘制">
+                    <outline text="1、承重结构">
+                        <outline text="砖混结构，墙体承重，不能拆除，墙体厚度有24、32、38">
+                        </outline>
+                        <outline text="钢架结构，柱子承重，隔墙厚度一般小于24">
+                            <outline text="根据物业指导拆除，有可能影响楼的主管道">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="2、窗帘盒">
+                        <outline text="1、为了美观，隐藏钢丝滑轨，老式建筑较常见">
+                        </outline>
+                        <outline text="2、现在都是窗帘杆">
+                        </outline>
+                    </outline>
+                    <outline text="3、门">
+                        <outline text="标准高2m-2.1m，符合中国99%的要求">
+                        </outline>
+                        <outline text="转轴和开合的位置">
+                            <outline text="三角箭头点画线">
+                                <outline text="尖头方向表示转轴位置">
+                                </outline>
+                                <outline text="底方向表示开合边">
+                                </outline>
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="4、建筑材料填充图案有严格标准">
+                    </outline>
+                    <outline text="5、开关">
+                        <outline text="离地高1.3-1.35m">
+                        </outline>
+                        <outline text="大小80*80mm2等">
+                        </outline>
+                    </outline>
+                    <outline text="6、酒店标间进门处较矮，因为上方需要布置中央空调的风道">
+                    </outline>
+                </outline>
+                <outline text="线宽">
+                    <outline text="建筑标准">
+                    </outline>
+                    <outline text="1、0.3">
+                        <outline text="细实线">
+                            <outline text="1、辅助线">
+                            </outline>
+                            <outline text="2、标注">
+                            </outline>
+                            <outline text="3、文字">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="2、0.6">
+                        <outline text="中实线">
+                            <outline text="其余情况都用中实线">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="3、0.9">
+                        <outline text="粗实线">
+                            <outline text="1、墙线">
+                            </outline>
+                            <outline text="2、设计师重点表达的图形">
+                            </outline>
+                        </outline>
+                    </outline>
+                </outline>
+                <outline text="快速引线">
+                    <outline text="LE">
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="Day05">
+                <outline text="修改面板（补充）">
+                    <outline text="1、阵列">
+                        <outline text="AR">
+                        </outline>
+                        <outline text="1、矩形阵列">
+                            <outline text="方法一：AR确认-选择对象确认-选择矩形阵列-通过热夹点调整行列数和行列间距">
+                            </outline>
+                            <outline text="方法二：AR下拉选择ARRAYCLASSIC-选择矩形阵列-选择对象-设置行列数-预览-调整行偏移和列偏移">
+                            </outline>
+                        </outline>
+                        <outline text="2、环形阵列">
+                            <outline text="方法一：AR确认-选择对象-选择极轴阵列-指定阵列的中心点-热夹点调整间距和数量">
+                            </outline>
+                            <outline text="方法二：AR下拉选择ARRAYCLASSIC-进入图表模式编辑">
+                            </outline>
+                        </outline>
+                        <outline text="3、路径阵列">
+                            <outline text="2012版之后出现">
+                            </outline>
+                            <outline text="方法一：AR确认-选择对象确认-选择路径阵列-选择路径曲线">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="2、打断于点">
+                    </outline>
+                    <outline text="3、打断">
+                        <outline text="打断两点之间">
+                        </outline>
+                    </outline>
+                    <outline text="4、倒角（倒平角）">
+                        <outline text="CHA">
+                        </outline>
+                        <outline text="CHA确认-命令提示栏点击距离-输入第二个倒角距离-确认-输入第二个倒角距离-确认-点击要倒角的两个邻边">
+                        </outline>
+                    </outline>
+                    <outline text="5、光顺曲线">
+                        <outline text="把两根样条线平滑地连接起来">
+                        </outline>
+                    </outline>
+                </outline>
+                <outline text="图层">
+                    <outline text="如何打开图层特性管理器">
+                        <outline text="1、直接点击图标">
+                        </outline>
+                        <outline text="2、快捷键LA">
+                        </outline>
+                    </outline>
+                    <outline text="1、新建图层">
+                        <outline text="Alt+N">
+                        </outline>
+                    </outline>
+                    <outline text="2、删除图层">
+                        <outline text="Alt+D">
+                        </outline>
+                    </outline>
+                    <outline text="3、置为当前">
+                        <outline text="Alt+C">
+                        </outline>
+                        <outline text="一般通过图层控制下拉菜单直接点击图层，实现快速切换">
+                        </outline>
+                    </outline>
+                    <outline text="4、图层设置">
+                        <outline text="1、命名">
+                            <outline text="1、辅助线（轴线）">
+                                <outline text="无室内量房数据时">
+                                </outline>
+                            </outline>
+                            <outline text="2、墙线">
+                            </outline>
+                            <outline text="3、门窗">
+                            </outline>
+                            <outline text="4、家具">
+                            </outline>
+                            <outline text="5、文字">
+                            </outline>
+                            <outline text="6、标注">
+                            </outline>
+                            <outline text="7、植物">
+                            </outline>
+                        </outline>
+                        <outline text="2、图层的开关">
+                            <outline text="图层的隐藏和显示">
+                            </outline>
+                        </outline>
+                        <outline text="3、图层的冻结">
+                            <outline text="同样可以隐藏图层，额外的可以提高软件工作效率">
+                            </outline>
+                        </outline>
+                        <outline text="4、图层的锁定">
+                            <outline text="锁定的图层不能再编辑">
+                            </outline>
+                        </outline>
+                        <outline text="5、图层的颜色">
+                            <outline text="图层颜色区别要明显">
+                            </outline>
+                        </outline>
+                        <outline text="6、图层的线型">
+                            <outline text="轴线、辅助线或特殊要求则改变线型，其余一般实线即可">
+                            </outline>
+                        </outline>
+                        <outline text="7、图层的线宽">
+                            <outline text="默认0.3，打印输出若不清晰，则改线宽">
+                            </outline>
+                        </outline>
+                        <outline text="8、图层的打印">
+                            <outline text="控制图层是否参与打印">
+                            </outline>
+                        </outline>
+                    </outline>
+                </outline>
+                <outline text="平面图绘制流程">
+                    <outline text="1、重新定义图纸大小">
+                    </outline>
+                    <outline text="2、设置图层">
+                        <outline text="1、改名字">
+                        </outline>
+                        <outline text="2、改颜色">
+                        </outline>
+                        <outline text="3、改线型">
+                        </outline>
+                    </outline>
+                    <outline text="3、绘制轴线（辅助线）">
+                        <outline text="XL构造线绘制轴线中，点划线不显示，如何更改比例">
+                            <outline text="1、菜单栏-格式-线型">
+                            </outline>
+                            <outline text="2、修改当前对象缩放比例">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="4、绘制墙线">
+                    </outline>
+                    <outline text="5、绘制门窗">
+                    </outline>
+                    <outline text="6、绘制家具">
+                    </outline>
+                    <outline text="7、文字标注">
+                    </outline>
+                    <outline text="8、尺寸标注">
+                    </outline>
+                    <outline text="9、打印输出">
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="Day06">
+                <outline text="标注">
+                    <outline text="条件">
+                        <outline text="标注时必须把对象捕捉打开">
+                        </outline>
+                    </outline>
+                    <outline text="1、线性标注">
+                        <outline text="DLI">
+                        </outline>
+                        <outline text="1、DLI确认-点击起点-点击端点-拖拽">
+                        </outline>
+                        <outline text="2、DLI连续两次确认-点击线-拖拽">
+                        </outline>
+                        <outline text="只能标注水平垂直的线">
+                        </outline>
+                    </outline>
+                    <outline text="2、对齐标注">
+                        <outline text="DAL">
+                        </outline>
+                        <outline text="1、DAL确认-点击起点-点击端点-拖拽">
+                        </outline>
+                        <outline text="2、DAL连续两次确认-点击线-拖拽">
+                        </outline>
+                        <outline text="可以标注斜线">
+                        </outline>
+                    </outline>
+                    <outline text="3、弧长标注">
+                        <outline text="DAR">
+                        </outline>
+                    </outline>
+                    <outline text="4、坐标标注">
+                        <outline text="不常用，一般用于大型城市规划">
+                        </outline>
+                    </outline>
+                    <outline text="5、半径标注">
+                        <outline text="DRA">
+                        </outline>
+                    </outline>
+                    <outline text="6、折弯标注（圆弧半径的标注）">
+                        <outline text="DJO">
+                        </outline>
+                    </outline>
+                    <outline text="7、直径标注">
+                        <outline text="DDI">
+                        </outline>
+                    </outline>
+                    <outline text="8、角度标注">
+                        <outline text="DAN">
+                        </outline>
+                    </outline>
+                    <outline text="9、快速标注">
+                        <outline text="批量选中标注">
+                        </outline>
+                    </outline>
+                    <outline text="10、基线标注">
+                        <outline text="条件">
+                            <outline text="必须先有一个线性标注">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="11、连续标注">
+                        <outline text="DCO">
+                        </outline>
+                        <outline text="条件">
+                            <outline text="必须先有一个线性标注">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="12、等距标注">
+                        <outline text="其它标注相对于基准标注抬升的">
+                        </outline>
+                    </outline>
+                    <outline text="13、折断标注">
+                        <outline text="为了美观">
+                        </outline>
+                    </outline>
+                    <outline text="14、引出标注（快速引线）">
+                        <outline text="LE">
+                        </outline>
+                        <outline text="主要用于文字标注">
+                        </outline>
+                    </outline>
+                    <outline text="15、圆心标记">
+                        <outline text="显示所画圆的圆心">
+                        </outline>
+                    </outline>
+                    <outline text="16、折弯线性">
+                        <outline text="画图时用折弯代替重复的部分，标注补充完整后的尺寸">
+                        </outline>
+                    </outline>
+                    <outline text="17、编辑标注">
+                        <outline text="1、点击图标按命令改，较复杂">
+                        </outline>
+                        <outline text="2、双击标注文字修改（2014版及以后）">
+                        </outline>
+                    </outline>
+                    <outline text="18、编辑标注文字">
+                        <outline text="调整标注与造型之间的距离及标注尺寸的位置">
+                        </outline>
+                    </outline>
+                    <outline text="19、标注更新">
+                        <outline text="针对DCO标注模式下的编辑标注文字，刷新格式，点击即可">
+                        </outline>
+                    </outline>
+                </outline>
+                <outline text="标注样式管理器">
+                    <outline text="D">
+                    </outline>
+                    <outline text="修改标注样式">
+                        <outline text="1、线">
+                            <outline text="1、尺寸线">
+                            </outline>
+                            <outline text="2、尺寸界线">
+                            </outline>
+                            <outline text="3、基线间距">
+                                <outline text="标注之间的距离，注意全局比例">
+                                </outline>
+                            </outline>
+                            <outline text="4、超出尺寸线">
+                                <outline text="尺寸界线高出尺寸线的部分">
+                                    <outline text="一般不用改，除非不应用全局比例">
+                                    </outline>
+                                </outline>
+                            </outline>
+                            <outline text="5、起点偏移量">
+                                <outline text="调整尺寸界线与造型之间的距离">
+                                </outline>
+                            </outline>
+                            <outline text="6、固定长度的尺寸界线">
+                                <outline text="统一调整尺寸界线的长度">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="2、符号与箭头">
+                            <outline text="1、将箭头改为建筑标记 / ">
+                            </outline>
+                            <outline text="2、将引线箭头改为直角">
+                            </outline>
+                        </outline>
+                        <outline text="3、文字">
+                        </outline>
+                        <outline text="4、调整">
+                            <outline text="1、使用全局比例">
+                            </outline>
+                            <outline text="2、文字的位置">
+                                <outline text="尺寸线上方，不带引线">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="5、主单位">
+                            <outline text="精度设为0">
+                            </outline>
+                        </outline>
+                    </outline>
+                </outline>
+                <outline text="打印输出">
+                    <outline text="1、虚拟打印">
+                        <outline text="将DWG转换为PDF">
+                            <outline text="矢量图">
+                            </outline>
+                            <outline text="1、菜单栏-文件-打印/Ctrl+P/点击打印图标">
+                            </outline>
+                            <outline text="2、打印机/绘图仪中选择DWG TO PDF">
+                            </outline>
+                            <outline text="3、图纸尺寸选择A3">
+                            </outline>
+                            <outline text="4、打印范围选择窗口-框选绘图区">
+                            </outline>
+                            <outline text="5、打印偏移选择居中打印">
+                            </outline>
+                            <outline text="6、打印比例选择布满图纸">
+                            </outline>
+                            <outline text="7、更多选项-打印样式表选择mono黑白打印">
+                            </outline>
+                            <outline text="8、图形方向设置（根据绘图内容而定）">
+                            </outline>
+                            <outline text="9、确认-指定保存位置">
+                            </outline>
+                        </outline>
+                        <outline text="TIFF">
+                            <outline text="无损压缩为位图">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="2、真实打印">
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="Day07">
+                <outline text="打印">
+                    <outline text="1、虚拟打印">
+                        <outline text="1、PDF">
+                        </outline>
+                        <outline text="2、TIFF">
+                            <outline text="1、菜单栏-文件-绘图仪管理器">
+                            </outline>
+                            <outline text="2、双击添加绘图仪向导-下一步至绘图仪型号-生产商选择光栅文件格式-型号选择TIFF不压缩文件-下一步至完成">
+                            </outline>
+                            <outline text="3、双击打开文件夹中的TIFF不压缩文件-弹出窗口-选择设备和文档设置-自定义图纸尺寸-点击添加">
+                            </outline>
+                            <outline text="4、弹窗中-选择创建新图纸-下一步-设置图纸尺寸（默认的最大分辨率也是不够的，推荐3200*2400）-下一步至完成（可能需要修改文件名）">
+                            </outline>
+                            <outline text="5、打开打印">
+                            </outline>
+                            <outline text="6、打印机/绘图仪选择TIFF不压缩文件-选择使用自定义图纸尺寸">
+                            </outline>
+                            <outline text="7、在图纸尺寸中选择自定义尺寸，如：3200*2400">
+                            </outline>
+                            <outline text="8、之后步骤与PDF相同">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="2、真实打印">
+                        <outline text="1、打开打印/Ctrl+P">
+                        </outline>
+                        <outline text="2、打印机/绘图仪选择所用打印机型号">
+                        </outline>
+                        <outline text="3、图纸尺寸（A3/A4）">
+                        </outline>
+                        <outline text="4、打印范围（窗口）">
+                        </outline>
+                        <outline text="5、打印偏移（居中打印）">
+                        </outline>
+                        <outline text="6、打印份数（先打印一张看是否有问题，没有问题则全部打印）">
+                        </outline>
+                    </outline>
+                </outline>
+                <outline text="量房">
+                    <outline text="量房需要的工具">
+                        <outline text="1、笔（最少需要两种颜色）">
+                        </outline>
+                        <outline text="2、夹板+纸张（A4/A3）">
+                        </outline>
+                        <outline text="3、激光测距仪（大尺寸）">
+                        </outline>
+                        <outline text="4、1.5m~2m卷尺（小尺寸）">
+                        </outline>
+                        <outline text="5、平板电脑">
+                        </outline>
+                    </outline>
+                    <outline text="量房视频">
+                        <outline text="1、观察房屋布局">
+                        </outline>
+                        <outline text="2、手绘房屋布局图">
+                        </outline>
+                        <outline text="3、量房">
+                            <outline text="1、垭口">
+                                <outline text="1、梁的下方，既不作门，也不作窗户">
+                                </outline>
+                            </outline>
+                            <outline text="2、墙体">
+                                <outline text="1、确定墙体是否承载墙体">
+                                    <outline text="敲击听声">
+                                    </outline>
+                                </outline>
+                            </outline>
+                            <outline text="3、电">
+                            </outline>
+                            <outline text="4、窗">
+                                <outline text="窗距顶和梁距离">
+                                </outline>
+                                <outline text="窗本身尺寸">
+                                </outline>
+                            </outline>
+                            <outline text="5、冷">
+                            </outline>
+                            <outline text="6、热">
+                            </outline>
+                        </outline>
+                        <outline text="5、与客户简单沟通">
+                        </outline>
+                        <outline text="4、拍照">
+                        </outline>
+                    </outline>
+                    <outline text="原始尺寸图绘制/放图">
+                        <outline text="1、量房尺寸为室内尺寸，外墙厚度定为240、320都可以">
+                        </outline>
+                        <outline text="2、重新定义图纸大小">
+                            <outline text="比量房整体尺寸大5%？">
+                            </outline>
+                        </outline>
+                        <outline text="3、设置图层">
+                            <outline text="墙线/门窗/文字/标注">
+                            </outline>
+                        </outline>
+                        <outline text="4、绘制">
+                            <outline text="1、墙线">
+                                <outline text="先画两条互相垂直且稍长于最大尺寸的直线，作为最外侧的两个相邻垂直内墙线的位置（基准）-水平或垂直方向偏移产生主要墙体用-修剪多余部分，产生主要轮廓-补充细节尺寸和窗户等">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="5、标注">
+                            <outline text="1、外部标注">
+                                <outline text="墙尺寸：标注全局比例大一些">
+                                </outline>
+                            </outline>
+                            <outline text="2、内部标注">
+                                <outline text="细部：标注全局比例小一些">
+                                </outline>
+                            </outline>
+                            <outline text="内外部标注不要标注同一段尺寸，避免产生重复">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="水电图">
+                        <outline text="1、复制出另一个尺寸图，并保留外部尺寸">
+                        </outline>
+                        <outline text="2、新建图层_梁-线型改为虚线-可能需要在格式_线型中改变虚线比例">
+                        </outline>
+                        <outline text="3、在图中补充梁（一般门洞上方有梁）">
+                        </outline>
+                        <outline text="4、新建图层_引线">
+                            <outline text="Le引线-上面填写文字标注">
+                                <outline text="门高、垭口高">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="5、标高">
+                            <outline text="形式">
+                                <outline text="1、倒三角图形">
+                                    <outline text="数字为距地面距离，“+”表示向上，“-”表示向下">
+                                    </outline>
+                                </outline>
+                                <outline text="2、文字表示，例：CH2800">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="6、新建图层_设备">
+                            <outline text="1、暖气片">
+                            </outline>
+                            <outline text="2、入户门箭头（图层待定）">
+                            </outline>
+                            <outline text="3、预留空调内外机连接管道孔（图示类似于半箭头的形态）">
+                                <outline text="安装空调时可重新打孔，将预留孔堵住">
+                                </outline>
+                            </outline>
+                            <outline text="4、给排水">
+                                <outline text="冷热水">
+                                    <outline text="图标各异，需要在图旁标注">
+                                    </outline>
+                                    <outline text="同一图层需要不同颜色">
+                                        <outline text="选择造型，单独给线条和填充色">
+                                        </outline>
+                                    </outline>
+                                </outline>
+                                <outline text="注意管道粗细">
+                                    <outline text="马桶管道粗，且为直落管，位置严格不可变">
+                                    </outline>
+                                    <outline text="地漏位置不可被设备挡住">
+                                    </outline>
+                                    <outline text="主管道最粗，位置不可动，可以做造型包起来">
+                                    </outline>
+                                </outline>
+                                <outline text="楼房管道默认封住">
+                                    <outline text="用虚线框住（图层_梁）">
+                                    </outline>
+                                </outline>
+                            </outline>
+                            <outline text="5、强弱电">
+                                <outline text="强电箱">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="7、其他尺寸标注">
+                            <outline text="1、窗户">
+                                <outline text="1、窗台距地">
+                                </outline>
+                                <outline text="2、窗体净高">
+                                </outline>
+                                <outline text="3、窗体上梁">
+                                </outline>
+                            </outline>
+                        </outline>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="Day08">
+                <outline text="居住空间设计">
+                    <outline text="1、居住空间建筑分为">
+                        <outline text="1、单元式">
+                            <outline text="1、板楼">
+                                <outline text="南北通透，一梯两户">
+                                </outline>
+                            </outline>
+                            <outline text="2、塔楼">
+                                <outline text="只有一个单元，每一层有6~8户">
+                                </outline>
+                            </outline>
+                            <outline text="3、板塔结合">
+                                <outline text="现在较少，一层有3~4户">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="2、别墅式">
+                            <outline text="1、连体别墅">
+                            </outline>
+                            <outline text="2、独栋别墅">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="2、居住建筑的功能空间">
+                        <outline text="1、起居室（客厅）">
+                        </outline>
+                        <outline text="2、卧室（主卧、次卧、老人房、客房）">
+                        </outline>
+                        <outline text="3、餐厅">
+                        </outline>
+                        <outline text="4、厨房">
+                        </outline>
+                        <outline text="6、书房">
+                        </outline>
+                        <outline text="5、卫生间">
+                        </outline>
+                        <outline text="7、储物间">
+                        </outline>
+                        <outline text="8、衣帽间">
+                        </outline>
+                        <outline text="9、影音室">
+                        </outline>
+                        <outline text="10、设备室">
+                        </outline>
+                        <outline text="11、健身房">
+                        </outline>
+                        <outline text="居住建筑是恶内生活行为分离表">
+                            <outline text="见理论ppt，活动-空间-时间映射表">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="3、居住建筑室内空间分类">
+                        <outline text="1、公共空间">
+                            <outline text="1、门厅">
+                            </outline>
+                            <outline text="2、起居室">
+                            </outline>
+                            <outline text="3、餐厅">
+                            </outline>
+                            <outline text="4、试听空间">
+                            </outline>
+                        </outline>
+                        <outline text="2、私密空间">
+                            <outline text="1、卧室">
+                            </outline>
+                            <outline text="2、书房">
+                            </outline>
+                            <outline text="3、卫生间">
+                            </outline>
+                        </outline>
+                        <outline text="3、家务操作空间">
+                            <outline text="1、厨房（占比更大）">
+                            </outline>
+                            <outline text="2、卫生间">
+                            </outline>
+                            <outline text="3、智能化设备节约家务时间-趋势">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="4、居住各空间功能分析">
+                        <outline text="1、起居室（客厅）">
+                            <outline text="1、功能分析">
+                                <outline text="1、团聚">
+                                </outline>
+                                <outline text="2、畅谈">
+                                </outline>
+                                <outline text="3、娱乐">
+                                </outline>
+                                <outline text="4、会客">
+                                </outline>
+                                <outline text="5、兼备功能">
+                                    <outline text="1、用餐">
+                                    </outline>
+                                    <outline text="2、学习和工作">
+                                    </outline>
+                                    <outline text="3、小憩">
+                                    </outline>
+                                </outline>
+                            </outline>
+                            <outline text="2、设计要点">
+                                <outline text="1、保证良好通风">
+                                    <outline text="通风条件不理想：窗户部分安装新风系统">
+                                    </outline>
+                                </outline>
+                                <outline text="2、防尘">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="2、餐厅">
+                            <outline text="1、功能分析">
+                                <outline text="1、就餐">
+                                </outline>
+                            </outline>
+                            <outline text="2、设计要点">
+                                <outline text="1、天花与餐桌的呼应">
+                                </outline>
+                                <outline text="2、灯光色温的选择">
+                                    <outline text="偏暖色效果更好">
+                                    </outline>
+                                </outline>
+                                <outline text="3、地面处理">
+                                    <outline text="1、便于清洁">
+                                    </outline>
+                                    <outline text="2、防水">
+                                    </outline>
+                                    <outline text="3、防污">
+                                    </outline>
+                                </outline>
+                                <outline text="4、墙面处理">
+                                    <outline text="1、墙面的颜色或材料">
+                                    </outline>
+                                    <outline text="2、墙面挂画-花卉、风景">
+                                    </outline>
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="3、厨房">
+                            <outline text="1、功能分析">
+                                <outline text="1、烹饪">
+                                </outline>
+                                <outline text="2、清洗">
+                                </outline>
+                                <outline text="3、储藏">
+                                </outline>
+                            </outline>
+                            <outline text="2、平面布局">
+                                <outline text="1、一字型">
+                                </outline>
+                                <outline text="2、对称型">
+                                </outline>
+                                <outline text="3、U字型">
+                                </outline>
+                                <outline text="4、L型">
+                                </outline>
+                                <outline text="风水：水槽和灶台不能对着放（水和火不相对）">
+                                </outline>
+                                <outline text="5、半岛型">
+                                    <outline text="开放式，有一侧操作台不靠墙">
+                                    </outline>
+                                </outline>
+                            </outline>
+                            <outline text="3、设计要点">
+                                <outline text="1、相关于烹饪、清洗、储藏的设备工具要全">
+                                </outline>
+                                <outline text="2、设备预留位置和插座">
+                                </outline>
+                                <outline text="3、每个工作单元最少两个插座">
+                                </outline>
+                                <outline text="4、工作三角区边长之和小于6m">
+                                    <outline text="省时省力">
+                                    </outline>
+                                </outline>
+                                <outline text="5、操作台高度800-910mm，台面进深500-600mm">
+                                </outline>
+                                <outline text="6、吊柜项面（顶）不超过1900，否则不易够；吊柜进深300-500；部分吊柜带电机">
+                                </outline>
+                                <outline text="7、操作面人造石/不锈钢：垂直静荷载2kg/平方厘米">
+                                </outline>
+                                <outline text="8、各工作中心要设置无眩光局部照明">
+                                </outline>
+                                <outline text="9、灶炉和冰箱之间要有一个单元的距离">
+                                    <outline text="大约是一个抽屉的宽度500-600">
+                                    </outline>
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="4、卧室的设计">
+                            <outline text="1、功能分析">
+                                <outline text="1、休息">
+                                </outline>
+                                <outline text="2、储藏">
+                                </outline>
+                                <outline text="3、休闲">
+                                </outline>
+                                <outline text="4、梳妆">
+                                </outline>
+                            </outline>
+                            <outline text="2、处理要点">
+                                <outline text="1、主人房">
+                                    <outline text="1、休息">
+                                    </outline>
+                                    <outline text="2、储藏">
+                                    </outline>
+                                    <outline text="3、休闲">
+                                    </outline>
+                                    <outline text="4、梳妆">
+                                    </outline>
+                                </outline>
+                                <outline text="2、儿童房">
+                                    <outline text="1、休息">
+                                    </outline>
+                                    <outline text="2、储藏">
+                                    </outline>
+                                    <outline text="4、娱乐">
+                                    </outline>
+                                    <outline text="5、梳妆">
+                                    </outline>
+                                    <outline text="3、学习">
+                                    </outline>
+                                </outline>
+                                <outline text="3、老人房">
+                                    <outline text="1、休息">
+                                    </outline>
+                                    <outline text="2、储藏">
+                                    </outline>
+                                    <outline text="3、安静">
+                                    </outline>
+                                    <outline text="4、朝阳">
+                                    </outline>
+                                    <outline text="5、夜间设置柔和照明">
+                                        <outline text="隐藏式，不直射">
+                                        </outline>
+                                        <outline text="藏在吊顶中，反射照明">
+                                        </outline>
+                                        <outline text="床底">
+                                        </outline>
+                                    </outline>
+                                </outline>
+                                <outline text="4、客房">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="5、书房">
+                            <outline text="1、书房功能分析">
+                                <outline text="1、阅读">
+                                </outline>
+                                <outline text="2、书写">
+                                </outline>
+                                <outline text="3、工作">
+                                </outline>
+                                <outline text="4、密谈">
+                                </outline>
+                            </outline>
+                            <outline text="2、处理要点">
+                                <outline text="1、储物/展示（书、抽藏品）">
+                                </outline>
+                                <outline text="2、工作、读写（要有局部照明）">
+                                </outline>
+                                <outline text="3、绿化、养鱼（休闲）">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="6、卫生间">
+                            <outline text="1、功能分析">
+                                <outline text="1、洗漱">
+                                </outline>
+                                <outline text="2、沐浴">
+                                </outline>
+                                <outline text="3、厕所">
+                                </outline>
+                            </outline>
+                            <outline text="2、处理要点">
+                                <outline text="1、兼用型">
+                                    <outline text="1、洗漱">
+                                    </outline>
+                                    <outline text="2、沐浴">
+                                    </outline>
+                                    <outline text="3、厕所">
+                                    </outline>
+                                </outline>
+                                <outline text="2、独立型">
+                                    <outline text="1、干身区">
+                                        <outline text="洗脸、化妆">
+                                        </outline>
+                                    </outline>
+                                    <outline text="2、湿身区">
+                                        <outline text="沐浴、厕所？">
+                                        </outline>
+                                    </outline>
+                                </outline>
+                                <outline text="3、折中型">
+                                    <outline text="在同一个空间用浴帘等设施将干湿进行分离">
+                                    </outline>
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="7、储藏空间">
+                            <outline text="1、功能分析">
+                                <outline text="1、衣物与卧室">
+                                </outline>
+                                <outline text="2、食品与厨房">
+                                </outline>
+                                <outline text="3、书籍与书房">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="8、门厅设计">
+                            <outline text="1、功能分析">
+                                <outline text="1、储藏">
+                                </outline>
+                                <outline text="2、换鞋、脱衣">
+                                </outline>
+                                <outline text="3、防尘">
+                                </outline>
+                            </outline>
+                        </outline>
+                        <outline text="9、走廊设计">
+                            <outline text="1、功能分析">
+                                <outline text="空间之间的连接">
+                                </outline>
+                            </outline>
+                            <outline text="2、平面形式">
+                                <outline text="1、一字型">
+                                </outline>
+                                <outline text="2、L型">
+                                    <outline text="L折角处为视觉消失点，需要重点设计">
+                                    </outline>
+                                </outline>
+                                <outline text="3、T型">
+                                </outline>
+                            </outline>
+                            <outline text="3、处理要点">
+                                <outline text="1、通过灯光消除走廊沉闷的氛围">
+                                    <outline text="1、筒灯">
+                                    </outline>
+                                    <outline text="2、壁灯">
+                                    </outline>
+                                    <outline text="3、光带">
+                                    </outline>
+                                </outline>
+                                <outline text="2、通过墙面装饰消除走廊沉闷氛围">
+                                    <outline text="1、墙面处理">
+                                    </outline>
+                                    <outline text="2、挂画">
+                                    </outline>
+                                </outline>
+                            </outline>
+                        </outline>
+                    </outline>
+                </outline>
+            </outline>
+            <outline text="Day09">
+                <outline text="立面设计">
+                    <outline text="1、功能立面">
+                        <outline text="1、开关位置">
+                        </outline>
+                        <outline text="2、插排位置">
+                        </outline>
+                        <outline text="3、强电箱位置">
+                        </outline>
+                        <outline text="5、通话器位置">
+                        </outline>
+                        <outline text="6、中央空调开关位置">
+                        </outline>
+                        <outline text="4、弱电位置">
+                        </outline>
+                    </outline>
+                    <outline text="2、造型立面">
+                        <outline text="1、居住空间">
+                            <outline text="1、电视背景墙">
+                            </outline>
+                            <outline text="2、沙发背景墙">
+                            </outline>
+                            <outline text="3、过道尽头">
+                            </outline>
+                            <outline text="4、楼梯旁边">
+                            </outline>
+                            <outline text="5、进门的玄关">
+                            </outline>
+                        </outline>
+                        <outline text="2、公共空间">
+                            <outline text="1、logo墙">
+                            </outline>
+                            <outline text="2、公司文化墙">
+                            </outline>
+                            <outline text="3、办公室造型墙">
+                            </outline>
+                            <outline text="4、会议室造型墙">
+                            </outline>
+                            <outline text="5、过道墙面">
+                            </outline>
+                            <outline text="6、过道尽头">
+                            </outline>
+                        </outline>
+                        <outline text="3、造型立面八大分类">
+                            <outline text="1、对称式">
+                            </outline>
+                            <outline text="2、中心式">
+                            </outline>
+                            <outline text="3、韵律式">
+                                <outline text="三等分？">
+                                </outline>
+                            </outline>
+                            <outline text="4 、节奏式">
+                                <outline text="一高一低一大一小">
+                                </outline>
+                            </outline>
+                            <outline text="5 、渐变式">
+                                <outline text="从大到小从浅到深">
+                                </outline>
+                            </outline>
+                            <outline text="6 、满铺式">
+                                <outline text="整个墙 / 场景为一幅画，注意区分壁纸和墙面漆">
+                                </outline>
+                            </outline>
+                            <outline text="7 、均衡式">
+                                <outline text="一侧是盆景，一侧是家居">
+                                </outline>
+                            </outline>
+                            <outline text="8 、自由式">
+                                <outline text="有一定含义 / 规律 / 方式方法">
+                                </outline>
+                                <outline text="如：庭院水系设计两头大，中间细，似如意造型，有寓意">
+                                </outline>
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="看懂立面索引">
+                    </outline>
+                </outline>
+                <outline text="公共空间设计">
+                    <outline text="1 、居住空间和公共空间区别">
+                        <outline text="1 、居住空间不需要空间划分（别墅除外）">
+                        </outline>
+                        <outline text="2 、公共空间需要重新空间划分">
+                        </outline>
+                    </outline>
+                    <outline text="2 、空间划分的方法">
+                        <outline text="1 、实体划分">
+                            <outline text="材料">
+                                <outline text="轻钢龙骨石膏板">
+                                    <outline text="耐腐蚀、阻燃、便宜、施工周期短 / 只能完成方正造型，无法完成曲面造型、墙体不承重">
+                                    </outline>
+                                </outline>
+                                <outline text="轻体砖">
+                                    <outline text="隔音隔热承重，较厚">
+                                    </outline>
+                                </outline>
+                                <outline text="玻璃">
+                                    <outline text="安全起见，需要贴膜">
+                                    </outline>
+                                </outline>
+                            </outline>
+                            <outline text="特点：空间独立，私密性强">
+                            </outline>
+                        </outline>
+                        <outline text="2 、相对划分">
+                            <outline text="材料">
+                                <outline text="不到顶的隔断">
+                                </outline>
+                                <outline text="家具">
+                                </outline>
+                                <outline text="绿化">
+                                </outline>
+                                <outline text="布艺 / 窗帘">
+                                </outline>
+                                <outline text="水体">
+                                    <outline text="一般用于户外，如：故宫外">
+                                    </outline>
+                                </outline>
+                            </outline>
+                            <outline text="特点：便于沟通，私密性差，适合于敞开式办公空间、商场、餐饮等">
+                            </outline>
+                        </outline>
+                        <outline text="3 、虚拟划分">
+                            <outline text="材料：装饰材料、灯光">
+                            </outline>
+                            <outline text="特点：空间分合自由，既断也连">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="4 、如何规划一个空间的大小">
+                        <outline text="1 、静态物体➕ 流通空间">
+                        </outline>
+                        <outline text="2 、如何判定静态物体的面积">
+                            <outline text="空间功能分析">
+                                <outline text="例：老板办公">
+                                    <outline text="功能分析">
+                                        <outline text="1 、办公">
+                                        </outline>
+                                        <outline text="2 、接待">
+                                        </outline>
+                                        <outline text="3 、休息">
+                                        </outline>
+                                    </outline>
+                                    <outline text="需要的家具">
+                                        <outline text="1 、老板桌">
+                                            <outline text="1.35平米">
+                                            </outline>
+                                        </outline>
+                                        <outline text="2 、老板椅">
+                                            <outline text="1.1平米">
+                                            </outline>
+                                        </outline>
+                                        <outline text="3 、接待椅2 把">
+                                            <outline text="1 平米 *2">
+                                            </outline>
+                                        </outline>
+                                        <outline text="4 、三人沙发">
+                                            <outline text="1.6平">
+                                            </outline>
+                                        </outline>
+                                        <outline text="5 、茶几">
+                                            <outline text="0.6平">
+                                            </outline>
+                                        </outline>
+                                        <outline text="6 、书柜">
+                                            <outline text="1.5平">
+                                            </outline>
+                                        </outline>
+                                        <outline text="7 、饮水机">
+                                            <outline text="0.3平">
+                                            </outline>
+                                        </outline>
+                                        <outline text="8 、绿植">
+                                            <outline text="0.3平">
+                                            </outline>
+                                        </outline>
+                                    </outline>
+                                </outline>
+                            </outline>
+                            <outline text="CAD查询面积快捷键：AA">
+                            </outline>
+                        </outline>
+                    </outline>
+                    <outline text="3 、空间的组成">
+                        <outline text="1 、静态物体">
+                            <outline text="家具、绿植、装饰品、电器 ——放在地面上的，占面积的">
+                            </outline>
+                        </outline>
+                        <outline text="2 、流通空间">
+                            <outline text="过道">
+                                <outline text="1 、单边房——过道一侧有房间，另一侧没有 ——最小 1.2m宽——不宜太窄，考虑消防作用和人流量 ——1.5m～ 2m">
+                                </outline>
+                                <outline text="2 、双边房——最小 1.4m——两侧房间不允许向外开">
+                                </outline>
+                                <outline text="3 、单向通道">
+                                    <outline text="1 、火车站">
+                                        <outline text="出入站人流区分">
+                                        </outline>
+                                    </outline>
+                                    <outline text="2 、机场">
+                                    </outline>
+                                    <outline text="3 、高速">
+                                    </outline>
+                                </outline>
+                            </outline>
+                        </outline>
+                    </outline>
+                </outline>
+            </outline>
+        </outline>
+    </body>
+</opml>
