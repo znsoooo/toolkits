@@ -1,31 +1,62 @@
-Ò»¼ü°²×°·ÅÖÃÔÚÍ¬¼¶Ä¿Â¼ÎÄ¼ş¼ĞÄÚµÄpython¿âÎÄ¼ş¡£
-Ò»¼ü°²×°½Å±¾·ÅÖÃÔÚ¶à¸öÎÄ¼ş¼ĞµÄÍ¬¼¶Ä¿Â¼ÏÂ£¬Í¨¹ıÎÄ¼ş¼ĞÃüÃû¿ØÖÆpython¿âµÄ°²×°Ë³Ğò¡£ÎÄ¼ş¼ĞÄÚ·ÅÖÃpython¿âµÄ°²×°°ü£¬¸ñÊ½Ö§³Ögz¡¢zipºÍwhl£¨ĞèÏÈ°²×°pip£©¡£
+ä¸€é”®å®‰è£…æ”¾ç½®åœ¨åŒçº§ç›®å½•æ–‡ä»¶å¤¹å†…çš„pythonåº“æ–‡ä»¶ã€‚
 
-ÎÒÄ¿Ç°Ó¦ÓÃµÄ°¸ÀıµÄÄ¿Â¼½á¹¹£º
+ä¸€é”®å®‰è£…è„šæœ¬æ”¾ç½®åœ¨å¤šä¸ªæ–‡ä»¶å¤¹çš„åŒçº§ç›®å½•ä¸‹ï¼Œé€šè¿‡æ–‡ä»¶å¤¹å‘½åæ§åˆ¶pythonåº“çš„å®‰è£…é¡ºåºã€‚æ–‡ä»¶å¤¹å†…æ”¾ç½®pythonåº“çš„å®‰è£…åŒ…ï¼Œæ ¼å¼æ”¯æŒgzã€zipå’Œwhlï¼ˆéœ€å…ˆå®‰è£…pipï¼‰ã€‚
 
 
-~/Ò»¼ü°²×°.py
 
-~/1_pipºÍsetuptools\pip-18.1.tar.gz
-~/1_pipºÍsetuptools\setuptools-40.6.3.zip
+æˆ‘ç›®å‰åº”ç”¨çš„æ¡ˆä¾‹çš„ç›®å½•ç»“æ„ï¼š
+
+
+
+
+
+~/ä¸€é”®å®‰è£….py
+
+
+
+~/1_pipå’Œsetuptools\pip-18.1.tar.gz
+
+~/1_pipå’Œsetuptools\setuptools-40.6.3.zip
+
+
 
 ~/2_pyinstaller_step1\altgraph-0.16.1.tar.gz
+
 ~/2_pyinstaller_step1\future-0.17.1.tar.gz
+
 ~/2_pyinstaller_step1\macholib-1.11.tar.gz
+
 ~/2_pyinstaller_step1\pefile-2018.8.8.tar.gz
+
 ~/2_pyinstaller_step1\pywin32-ctypes-0.2.0.tar.gz
+
+
 
 ~/2_pyinstaller_step2\PyInstaller-3.4.tar.gz
 
+
+
 ~/3_main_step1\colorama-0.4.1.tar.gz
+
 ~/3_main_step1\numpy-1.15.4-cp36-none-win_amd64.whl
+
 ~/3_main_step1\Pillow-5.3.0-cp36-cp36m-win_amd64.whl
+
 ~/3_main_step1\Pypubsub-4.0.0.zip
+
 ~/3_main_step1\pyserial-3.4.tar.gz
+
 ~/3_main_step1\pywin32-224-cp36-cp36m-win_amd64.whl
+
 ~/3_main_step1\six-1.12.0.tar.gz
 
+
+
 ~/3_main_step2\opencv_python-3.1.0.5-cp36-cp36m-win_amd64.whl
+
 ~/3_main_step2\qrcode-5.3.tar.gz
+
 ~/3_main_step2\vtk-8.1.2-cp36-cp36m-win_amd64.whl
+
 ~/3_main_step2\wxPython-4.0.3-cp36-cp36m-win_amd64.whl
+
