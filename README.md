@@ -2,12 +2,13 @@
 some interesting toolkits
 
 ## Other Repo
-- [ ] 电话簿(小程序和HTML)
+- [x] 电话簿(py/HTML/小程序) ： https://github.com/znsoooo/contacts
+- [x] QRCode（py/js/recv） ：https://github.com/znsoooo/qrcode
+- [ ] 文件转二维码视频（非qr）
+- [ ] 视频提取二维码
 
 ## todolist
 - [x] 图片压入信息
-- [ ] 视频提取二维码
-- [ ] 文件转二维码视频（非qr）
 - [ ] 读取Excel的格式（不用pywin32）
 - [ ] 聊天室/局域网收发文件
 - [x] Word/PPT/Excel转TXT/比对差异/压缩差异
@@ -16,7 +17,6 @@ some interesting toolkits
 ## 临时工具
 - [x] 思维导图格式转换工具
 - [x] 提取c语言main程序中的各函数调用嵌套结构
-- [ ] 提取office图片
 
 ## About work
 - [ ] 机械臂模拟
