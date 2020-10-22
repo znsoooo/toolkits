@@ -1,5 +1,6 @@
 # 20200319 build
 # 20200608 fix
+# 20201022 匹配嵌套函数
 
 import re
 import os
@@ -22,7 +23,7 @@ def ReadAllFiles(folder, exts):
                 try:
                     ss += sb.decode() + '\n'
                 except:
-                    ss += sb.decode('gbk') + '\n'
+                    ss += sb.decode('gbk', errors='ignore') + '\n'
     return ss
 
 
@@ -53,21 +54,22 @@ def ExtractBlocks(s):
 
 
 def ExtractFunctions(s):
-    s_strip = re.sub(r'[\n\t ]+', ' ', s)
-    split_cnt = s_strip.find('{')
-    functions1 = re.findall(r'([\.a-zA-Z0-9_]+)[ \t\n]*(\(.*?\))', s_strip[:split_cnt])
-    functions2 = re.findall(r'([\.a-zA-Z0-9_]+)[ \t\n]*(\(.*?\))', s_strip[split_cnt:])
+    s = re.sub(r'\s+', ' ', s)
+    n = s.find('{')
+    funs1 = re.findall(r'(\w+)\s*(\(.*?\))', s[:n])
+    funs2 = re.findall(r'(\w+)\s*\(', s[n:])
+    funs3 = list(set(funs2))    # 去重
+    funs3.sort(key=funs2.index) # 排序
 
-    if len(functions1) == 0: # 如typedef struct不是函数
+    if len(funs1) == 0: # 如typedef struct不是函数
         return
 
-    name, param = functions1[-1] # 最外层大括号前的最后一个函数
+    name, param = funs1[-1] # 最外层大括号前的最后一个函数
 
-    inner = []
-    for function, _ in functions2:
-        if function not in inner and function != name: # 防止递归
-            inner.append(function)
-    return name, param, inner
+    if name in funs3:
+        funs3.remove(name) # 防止递归
+
+    return name, param, funs3
 
 
 def Unfold(functions_all, name, level):
@@ -109,13 +111,5 @@ def AnalysisCode(folder, exts, save_file=None):
 
 
 
-##folder = '软件说明参考文件'
-##AnalysisCode(folder, ['.c'], '分析_原版.txt')
-##
-##folder = r'E:\lsx\C-Free\Projects\unfold'
-##AnalysisCode(folder, ['.cpp'], '分析_展开版.txt')
-
-folder = r'E:\lsx\C-Free\Projects\lsx'
-print(AnalysisCode(folder, ['.cpp'], '分析_原版2-2.txt'))
-
-
+folder = r'E:\cpp\hello'
+AnalysisCode(folder, ['.cpp'], '分析_原版_fix.txt')
