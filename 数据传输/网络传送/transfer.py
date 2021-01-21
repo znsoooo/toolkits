@@ -1,4 +1,14 @@
+# -*- coding: utf-8 -*-
+
 # build 20210114
+
+# v2021
+# UDP发消息TCP传文件
+# 输入目标IP
+# 文件MD5码作为文件名前缀以防止文件重名覆盖
+# 发送时显示传送文件摘要
+# 文件不存在时视为发送消息
+
 
 import os, sys
 import time
@@ -9,7 +19,7 @@ from threading import Thread
 tk = __import__('Tkinter' if sys.version_info[0] == 2 else 'tkinter')
 
 HOST    = socket.gethostbyname(socket.gethostname())
-PORT    = 5000
+PORT    = 5009
 BUFSIZE = 1024
 
 
