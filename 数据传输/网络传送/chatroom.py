@@ -4,8 +4,8 @@
 # Version:  1.0.5
 # Author:   Lishixian
 # Website:  github.com/znsoooo/toolkits
-# Python:   2.7/3.x
 # Platform: Windows/Linux
+# Python:   2.7/3.x
 
 # Useage:
 # 上部消息记录,中间发送消息,左下角发送IP地址,可直接编辑,右键从列表中选择
@@ -19,16 +19,6 @@
 
 # build 20210115
 
-# TODO
-# 当启动时间久了会莫名地无法接收文件,无报错,但是重启后恢复
-
-# 窗口变化适配(缩小)
-# 快捷键
-# 报错异常处理
-# 文件不能发给自己
-# 软重启
-# 发送广播消息
-
 
 import os, sys
 import time
@@ -36,7 +26,7 @@ import socket
 import hashlib
 from threading import Thread
 
-import traceback # for test
+# import traceback # for test
 
 try:
     # raise # for test no tk-module
