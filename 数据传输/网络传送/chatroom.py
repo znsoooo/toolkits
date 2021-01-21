@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # Name:     Chatroom
-# Version:  1.0.3
+# Version:  1.0.5
 # Author:   Lishixian
 # Website:  github.com/znsoooo/toolkits
 # Python:   2.7/3.x
@@ -9,21 +9,26 @@
 
 # Useage:
 # 上部消息记录,中间发送消息,左下角发送IP地址,可直接编辑,右键从列表中选择
-# 窗口标题显示当前状态
-# 当无法加载GUI库时依然可以满足运行
-# 发送消息为文件夹路径时,返回本机或对方机文件列表
-# 发送消息为文件路径时,发送或接收对应文件,文件名前缀增加文件MD5字符串
+# 窗口标题传送文件进度条
+# 发送消息为文件夹路径时,返回本机或对方文件列表
+# 发送消息为文件路径时,发送或接收对应文件,重名增加序号后缀
+# 允许使用相对路径(.\name)
 # 上线广播,获取所有在线的聊天室IP,下线广播,通知移出列表
+# 当无法加载GUI库时可作服务器运行,终端打印简略消息
+
 
 # build 20210115
 
 # TODO
-# 当tkinter无法加载时
-# 传文件进度条
+# 当启动时间久了会莫名地无法接收文件,无报错,但是重启后恢复
 
-# 窗口变化适配
+# 窗口变化适配(缩小)
 # 快捷键
 # 报错异常处理
+# 文件不能发给自己
+# 软重启
+# 发送广播消息
+
 
 import os, sys
 import time
@@ -34,29 +39,49 @@ from threading import Thread
 import traceback # for test
 
 try:
-    # raise # TODO for test no tk-module
+    # raise # for test no tk-module
     tk = __import__('Tkinter' if sys.version_info[0] == 2 else 'tkinter')
 except:
-    tk = False
+    print('Warning: import tk-module fail.')
+    class TkFake:
+        class Tk: pass
+        class Menu: pass
+        def __bool__(self): return False
+    tk = TkFake()
+    print('Warning: create fake tk-class.')
 
 LOG  = 'log.txt'
 
 HOST    = socket.gethostbyname(socket.gethostname()) # TODO Linux获取地址是127.0.0.1
+# TODO 收到的REPEAT消息即为自己的IP地址? 无网线是否影响?
 PORT    = 5009
 BUFSIZE = 4096 # TODO 影响UDP消息最长字符(4096/3=1365)
-CMD_LEN = 20   # MAX_LEN OF 'SEND::' AND SO ON
+CMD_LEN = 20   # MAX_LEN OF COMMAND LIKE 'SEND::'
+TICK    = 0.5
+
+__title__ = 'Chatroom (%s)'%HOST
 
 
-def Md5(data):
-    return hashlib.md5(data).hexdigest()[:6].upper()+ '_'
+class Progress:
+    def __init__(self, info, file, total):
+        self.info = info
+        self.file = os.path.basename(file)
+        self.total = total
+        self.t = time.time()
+
+    def __call__(self, size):
+        if time.time() - self.t > TICK: # timer
+            self.t = time.time()
+            app.title('%s: %s (%.1f%%)'%(self.info, self.file, 100.0*size/self.total)) # py2不能强制类型转换所以用100.0
 
 
-def GetFileData(file):
-    file2 = file.encode('u8') # Linux py27: unicode to str
-    if os.path.isfile(file2):
-        with open(file2, 'rb') as f:
-            return f.read()
-    return b''
+def UniqueFile(file): # Good!
+    root, ext = os.path.splitext(file)
+    cnt = 1
+    while os.path.exists(file):
+        file = b'%s_%d%s'%(root, cnt, ext)
+        cnt += 1
+    return file
 
 
 def TcpSendFile(file, addr): # <file> can be with dirs
@@ -64,23 +89,24 @@ def TcpSendFile(file, addr): # <file> can be with dirs
     client.connect((addr, PORT))
 
     # send file name
-    client.send(file.encode('u8'))
+    file2 = file.encode('u8')
+    file3 = os.path.basename(file2) # send filename without dir # win和linux的文件路径分隔符不一样可能导致错误
+    client.send(file3)
     client.recv(BUFSIZE)
-    data = GetFileData(file)
     # send file size
-    client.send(str(len(data)).encode())
-    client.recv(BUFSIZE)
-    # send file md5
-    client.send(Md5(data).encode())
+    size = os.path.getsize(file2)
+    client.send(str(size).encode())
     client.recv(BUFSIZE)
 
-    size = len(data)
-    for n in range(0, size, BUFSIZE):
-        client.send(data[n:n+BUFSIZE])
+    prog = Progress('Sending', file, size) # progress bar
+    with open(file2, 'rb') as f:
+        for n in range(0, size, BUFSIZE):
+            client.send(f.read(BUFSIZE))
+            prog(n+BUFSIZE) # progress bar # 保证了此处传参一定!=0
 
     client.close()
 
-    return size, os.path.split(file)[1]
+    return size, file3.decode('u8')
 
 
 def TcpRecvFile():
@@ -95,17 +121,15 @@ def TcpRecvFile():
     # recv file size
     size = size2 = int(client.recv(BUFSIZE))
     client.send(str(size).encode())
-    # recv file md5
-    md5 = client.recv(BUFSIZE)
-    client.send(md5)
 
-    file2 = md5 + os.path.split(file)[1]
-    if size:
-        with open(file2, 'wb') as f:
-            while size:
-                block = client.recv(BUFSIZE)
-                f.write(block)
-                size -= len(block)
+    file2 = UniqueFile(file)
+    prog = Progress('Recving', file2.decode('u8'), size2) # progress bar
+    with open(file2, 'wb') as f:
+        while size: # 空文件也会传送(测试通过)
+            block = client.recv(BUFSIZE)
+            f.write(block)
+            size -= len(block)
+            prog(size2-size) # progress bar # 保证了此处传参一定!=0
 
     client.close()
     server.close()
@@ -113,17 +137,59 @@ def TcpRecvFile():
     return size2, file2.decode('u8')
 
 
-def Title(msg):
-    print([msg]) # Linux py27: print(str) always fail, but print(list) is good.
-    if app:
-        app.title(msg)
-
-
-def LogFile(s=''):
+def LogFile(s=''): # Good!
     with open(LOG, 'ab+') as f:
         f.write(s.encode('u8'))
         f.seek(0)
         return f.read().decode('u8')
+
+
+def Dispatch(u, cmd, msg, addr):
+    # 前缀 SEND RECV BOOT ROBO ECHO AUTO FILE EROR
+    app.addrs.add(addr) # TODO 是否要排除自己?
+    if cmd in ['SEND', 'RECV']:
+        app.Log('RECV', addr, msg)
+    elif cmd == 'ECHO':
+        app.Log('ECHO', addr, msg)
+    if app:
+        app.s3.set(addr)
+
+    if cmd == 'SEND':
+        u.SendCmd('REPL', msg)
+
+    elif cmd in ['RECV', 'REPL']:
+        result = []
+        for s in msg.split('\n'):
+            s = s.encode('u8') # Linux py27: unicode to str
+            if os.path.isdir(s):
+                result += [os.path.join(s, file) for file in os.listdir(s)]
+            elif os.path.isfile(s):
+                s = s.decode('u8') # Linux py27: str to unicode
+                u.SendCmd('ACK1', s)
+        if result:
+            ss = b'\n'.join(result) # use b'\n' for next line
+            ss = ss.decode('u8') # Linux py27: str to unicode
+            if cmd == 'RECV':
+                u.SendCmd('ECHO', ss)
+            app.Log('ECHO', HOST, ss)
+
+    elif cmd == 'ACK1':
+        u.SendCmd('ACK2', msg)
+        size, file = TcpRecvFile()
+        app.Log('FILE', addr, 'Recved: %s (%d)'%(file, size)) # 先接收文件后记录log
+        app.title(__title__)
+
+    elif cmd == 'ACK2':
+        app.Log('FILE', HOST, 'Sending: %s'%msg) # 发送的文件是带路径的(msg),接收的文件是不带路径的(file)
+        size, file = TcpSendFile(msg, addr) # 先记录log后发送文件
+        app.title(__title__)
+
+    elif cmd == 'BROC':
+        if msg == 'ONLINE':
+            u.SendCmd('BROC', 'REPEAT')
+        elif msg == 'OFFLINE':
+            if addr in app.addrs:
+                app.addrs.remove(addr)
 
 
 def Receiver(u):
@@ -131,56 +197,11 @@ def Receiver(u):
         while RUN:
             cmd, msg, addr = u.RecvCmd()
             # print((cmd, msg, addr)) # for test
-            if app: # 前缀 SEND RECV BOOT ROBO ECHO AUTO FILE
-                app.addrs.add(addr) # TODO 是否要排除自己?
-                if cmd in ['SEND', 'RECV']:
-                    app.Log('RECV', addr, msg)
-                elif cmd == 'ECHO':
-                    app.Log('ECHO', addr, msg)
-                app.s3.set(addr)
-
-            if cmd == 'SEND':
-                u.SendCmd('REPL', msg)
-
-            elif cmd in ['RECV', 'REPL']:
-                result = []
-                for s in msg.split('\n'):
-                    s = s.encode('u8') # Linux py27: unicode to str
-                    if os.path.isdir(s):
-                        result += [os.path.join(s, file) for file in os.listdir(s)]
-                    elif os.path.isfile(s):
-                        s = s.decode('u8') # Linux py27: unicode to str
-                        Title('Sending: "%s"'%s)
-                        u.SendCmd('ACK1', s)
-                if result:
-                    ss = b'\n'.join(result) # use b'\n' for next line
-                    ss = ss.decode('u8') # Linux py27: unicode to str
-                    if cmd == 'RECV':
-                        u.SendCmd('ECHO', ss)
-                    elif app:
-                        app.Log('ECHO', HOST, ss)
-
-            elif cmd == 'ACK1':
-                u.SendCmd('ACK2', msg)
-                Title('Recving: "%s"'%msg)
-                size, file = TcpRecvFile()
-                Title('Recved: "%s" (%d)'%(file, size))
-                if app:
-                    app.Log('FILE', addr, 'Recv: %s'%file)
-
-            elif cmd == 'ACK2':
-                size, file = TcpSendFile(msg, addr)
-                Title('Sended: "%s" (%d)'%(file, size))
-                if app:
-                    app.Log('FILE', HOST, 'Send: %s'%file)
-
-            elif cmd == 'BROC':
-                if msg == 'ONLINE':
-                    u.SendCmd('BROC', 'REPEAT')
-                elif msg == 'OFFLINE':
-                    if app and addr in app.addrs:
-                        app.addrs.remove(addr)
-
+            try:
+                Dispatch(u, cmd, msg, addr)
+            except Exception as e:
+                app.Log('EROR', addr, e)
+                # raise e # for test
     Thread(target=th).start()
 
 
@@ -222,6 +243,23 @@ class MyMenu(tk.Menu):
         self.post(evt.x_root, evt.y_root)
 
 
+class MyAppFake(tk.Tk):
+    def __init__(self):
+        self.addrs = {'localhost'}
+
+    def __bool__(self):
+        return False
+
+    def title(self, msg):
+        print(msg.encode('u8')) # Linux: print(str) always fail
+
+    def Log(self, typ, ip, msg):
+        t = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+        s = '%s %s %s\n%s\n\n'%(typ, ip, t, msg)
+        LogFile(s)
+        print(s.encode('u8'))
+
+
 class MyApp(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
@@ -259,7 +297,7 @@ class MyApp(tk.Tk):
         self.menu = MyMenu()
         ent1.bind('<ButtonRelease-3>', self.OnMenuPost)
 
-        self.title('Chatroom (%s)'%HOST)
+        self.title(__title__)
         self.Center()
 
     def OnMenuPost(self, evt):
@@ -298,12 +336,16 @@ if __name__ == '__main__':
     RUN = True
     u = Udp()
     Receiver(u) # start udp receiver in back-thread
-    app = None  # when tk-lib could not used
-    app = MyApp()
+    if tk:
+        app = MyApp()
+    else:
+        app = MyAppFake()  # when tk-lib could not used
+        print('Warning: create fake app.')
     u.Broadcast('ONLINE')
-    app.mainloop()
 
-    app = None  # window closed
-    RUN = False
-    u.Broadcast('OFFLINE')
-    u.close()
+    if app:
+        app.mainloop()
+        app = MyAppFake() # window closed
+        RUN = False
+        u.Broadcast('OFFLINE')
+        u.close()
