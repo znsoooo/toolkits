@@ -10,7 +10,7 @@ some interesting toolkits
 ## todolist
 - [x] 图片压入信息
 - [ ] 读取Excel的格式（不用pywin32）
-- [ ] 聊天室/局域网收发文件
+- [x] 聊天室/局域网收发文件
 - [x] Word/PPT/Excel转TXT/比对差异/压缩差异
 - [x] 公众号文章转图片
 
@@ -20,7 +20,8 @@ some interesting toolkits
 
 ## About work
 - [ ] 机械臂模拟
-- [x] 文件名自动标密
+- [x] 文件名自动标密/Office文档内部标密/文件名替换为MD5码并保存恢复记录
 - [x] 自动格式化文件名
 - [x] 周报统计
 - [x] cmd流程控制
+- [ ] 合并多个Excel文档
