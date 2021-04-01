@@ -1,6 +1,10 @@
 # build 20200604
 # 登录云表并复制最后一次提交的<保密自查表>并重复提交新一月的表单
 
+# 20210203
+# 时间基准改为定位为一周前的日期
+# 支持修改保密次数和保密学时(字段s_1_4_1和s_1_4_2)
+
 # feature:
 # 自动获取当前用户名填充为账号
 # 默认填充当前年份和月份
@@ -22,8 +26,8 @@ import time
 import hashlib
 import urllib.request
 
-appName = 'xxxx-xxxx-xxxx-xxxx'
-appKey  = 'yyyy-yyyy-yyyy-yyyy'
+appName = '00caee91-e487-48a2-a834-85430b495bb6'
+appKey  = 'eef3cd0d-fbc2-4645-9a6a-969c6251aa3d'
 
 BASE_URL = 'http://10.110.0.177:88/10002/openapi/1.0/'
 
@@ -98,13 +102,15 @@ def GetDefault():
     import re
     import uuid
     import getpass
+    import datetime
 
     mac      = '-'.join(re.findall('..', uuid.uuid1().hex[-12:].upper()))
     user     = getpass.getuser()
     username = user + '@12.calt.casc'
     password = '123456'
-    year     = time.localtime()[0]
-    month    = time.localtime()[1]
+    day_base = datetime.date.today() - datetime.timedelta(days=7) # 定位为一周前的日期
+    year     = day_base.year
+    month    = day_base.month
 
     return [mac, username, password, year, month]
 
@@ -131,9 +137,9 @@ def GetUserData(file):
 
     pprint('用户名：%s\n密  码：%s\n自查年：%s\n自查月：%s'%tuple(user_data[1:]))
 
-    while input('请确认以上信息是否正确[y/n]：').lower() != 'y':  # 精彩的写法!!! [y/n]确认
+    while input('请确认以上信息是否正确[y/n]：').lower() != 'y':  # GOOD!!! [y/n]确认
         for i, key in enumerate(['用户名','密  码','自查年','自查月']):
-            # 精彩的写法!!! 不变或输入新值
+            # GOOD!!! 不变或输入新值
             user_data[i+1] = input('请输入新的<%s>，保持不变<%s>请回车：'%(key, user_data[i+1])) or user_data[i+1]
         pprint('用户名：%s\n密  码：%s\n自查年：%s\n自查月：%s'%tuple(user_data[1:]))
 
@@ -190,6 +196,12 @@ def main():
     data['objectId'] = 0
     data["自查年"] = user_data[3]
     data['自查月'] = user_data[4]
+
+    # 修改保密次数和保密学时(字段s_1_4_1和s_1_4_2)
+    # GOOD!!! 不变或输入新值
+    data['s_1_4_1'] = int(input('请输入新的<保密次数>，保持不变<%d>请回车：'%data['s_1_4_1']) or data['s_1_4_1'])
+    data['s_1_4_2'] = int(input('请输入新的<保密学时>，保持不变<%d>请回车：'%data['s_1_4_2']) or data['s_1_4_2'])
+
 
     try:
         request('十二所员工月度保密自查表/%s'%latest_id, data=pack('formJson', data))
