@@ -111,10 +111,10 @@ while 1:
     failed  = []
     for n, file in enumerate(files):
         if not os.path.isfile(file):
-            Log('File not exist of "%s"'%(file))
+            Log('(%d/%d) File not exist of "%s"'%(n+1, len(files), file))
             continue # 跳过非文件
         if os.path.splitext(file)[1] not in ['.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx']:
-            Log('Extension not available of "%s"'%(file))
+            Log('(%d/%d) Extension not available of "%s"'%(n+1, len(files), file))
             continue # 跳过后缀名不匹配
 
         basename = os.path.basename(file)
@@ -129,13 +129,13 @@ while 1:
                     Log('(%d/%d) Failed  add "%s" in "%s" error "%s"'%(n+1, len(files), text, file, e))
                 break # 前面的规则优先级高
         else:
-            Log('Mismatch keys in "%s"'%(file))
+            Log('(%d/%d) Mismatch keys in "%s"'%(n+1, len(files), file))
     print('转换完毕..')
     print('..')
 
     if files:
         if failed:
-            Log('Failed:\n' + '\n'.join(failed))
+            Log('Failed files:\n' + '\n'.join(failed))
             print('..')
         Log('总共%d个文件，成功%d个文件，失败%d个文件，跳过%d个文件。'%(len(files), len(success), len(failed), len(files)-len(success)-len(failed)))
         print('..')
