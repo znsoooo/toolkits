@@ -26,8 +26,8 @@ import time
 import hashlib
 import urllib.request
 
-appName = '00caee91-e487-48a2-a834-85430b495bb6'
-appKey  = 'eef3cd0d-fbc2-4645-9a6a-969c6251aa3d'
+appName = 'xxxx-xxxx-xxxx-xxxx'
+appKey  = 'yyyy-yyyy-yyyy-yyyy'
 
 BASE_URL = 'http://10.110.0.177:88/10002/openapi/1.0/'
 
