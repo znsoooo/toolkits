@@ -6,6 +6,9 @@ import cv2
 import numpy as np
 
 
+METHOD = cv2.TM_SQDIFF_NORMED # TM_SQDIFF_NORMED, TM_CCORR_NORMED, TM_CCOEFF_NORMED
+
+
 def unique(p, dash='-'):
     '''命名唯一文件名'''
     root, ext = os.path.splitext(p)
@@ -18,9 +21,11 @@ def unique(p, dash='-'):
 
 def diff(arr1, arr2): # for test
     '''比较两数组之间的差异'''
+    result = []
     for n, (a1, a2) in enumerate(zip(arr1, arr2)):
         if a1 != a2:
-            print(f'{n}: {a1}, {a2}')
+            result.append(f'{n:3}: {a1:3}, {a2:3}')
+    return '\n'.join(result)
 
 
 def imshow(img, delay=50, title=''): # for test
@@ -40,9 +45,10 @@ def imsave(file): # for test
 def imiter(file, st=None, ed=None):
     '''封装的视频读取迭代器'''
     cap = cv2.VideoCapture(file)
-    while True:
+    while cap.isOpened():
         ret, img = cap.read()
         if not ret:
+            cap.release()
             return
         yield img[st:ed]
 
@@ -59,36 +65,30 @@ def repeat(file):
     return where.min(), where.max() + 1
 
 
-def overlay(d1, d2, d): # general function
-    '''计算重叠部分差异绝对值的平均值'''
-    L1 = d1.shape[0]
-    L2 = d2.shape[0]
-    dd1 = d1[max(0,  d):min(L1, L2+d)]
-    dd2 = d2[max(-d, 0):min(L1-d, L2)]
-    return np.abs(- 1 * dd2 + dd1).mean() # safe plus  # / dd1.shape[0]
+def match(image, templ, method):
+    th, tw = templ.shape[:2]
+    result = cv2.matchTemplate(image, templ, method)
+    result2 = (result - result.min()) / (result.max() - result.min())
+    # imshow(np.tile(result2, 150)) # for debug
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
+    return min_loc if method == cv2.TM_SQDIFF_NORMED else max_loc
 
 
 def offset(img1, img2):
     '''计算两张图片的平移偏移量'''
-    height = img1.shape[0]
-    avg = np.inf
-    for h in range(- 100, height // 2): # 搜寻范围
-        avg1 = overlay(img1, img2, h)
-        if avg > avg1:
-            avg = avg1
-            dh = h
-    return dh, avg
+    img2 = img2[100:-img2.shape[0]//2] # 搜寻范围
+    dh = match(img1, img2, METHOD)
+    return dh[1] - 100
 
 
-def calc(file, N=1, st=None, ed=None):
+def calc(file, st=None, ed=None):
     '''计算纵向滚动视频的逐帧偏移量'''
     gaps = []
     for n, img2 in enumerate(imiter(file, st, ed)):
-        img2 = img2.reshape((img2.shape[0], N, -1)).mean(2) # 一行缩小为N像素后进行对比
         if n:
-            dh, avg = offset(img1, img2)
+            dh = offset(img1, img2)
             gaps.append(dh)
-        img1 = img2.copy()
+        img1 = img2
     return gaps
 
 
@@ -120,17 +120,19 @@ def join_avg(file, gaps, st=None, ed=None):
 def video2picture(file):
     '''视频转长图并自动保存'''
     # imsave(file) # for test
+    # for img in imiter(file):
+    #     imshow(img)
 
     if not 'easy':
-        gaps = calc(file, 10)
+        gaps = calc(file)
         data = join_bottom(file, gaps)
 
     else:
         st, ed = repeat(file)
+        # st, ed = (None, None)
         print('st, ed =', (st, ed))
-        gaps = calc(file, 10) # TODO 不掐头去尾反而更准确一点，因为有“惩罚”
+        gaps = calc(file, st, ed) # TODO 不掐头去尾反而更准确一点，因为有“惩罚”
         print('gaps =', gaps)
-        diff(gaps0, gaps)
 
         if 'avg':
             data = join_avg(file, gaps, st, ed)
