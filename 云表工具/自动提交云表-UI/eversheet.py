@@ -2,7 +2,7 @@
 # 登录云表并复制最后一次提交的<保密自查表>并重复提交新一月的表单
 
 # 20210203
-# 时间基准改为定位为一周前的日期
+# 时间基准改为定位为20天前的日期
 # 支持修改保密次数和保密学时(字段s_1_4_1和s_1_4_2)
 
 # feature:
@@ -17,8 +17,6 @@
 # debug打包:
 # 避免pyinstaller打包成debug模式时产生报错(-d noarchive)
 # 避免debug运行时程序运行结束自动退出(Press Enter to finish)
-# pprint设置延时和空行增加程序调试运行时的段落感
-
 
 import os
 import json
@@ -87,9 +85,7 @@ def AnalysisLoginJson(loginJson):
 
 
 def AnalysisPageJson(data):
-    # result = [[row["objectId"], row["updatedAt"], row["createdBy"]] for row in data["results"]]
-    # return result
-    result = ['%s,%s,%s'%(row["objectId"], row["updatedAt"], row["createdBy"]) for row in data["results"]]
+    result = ['%s,%s,%s'%(row['objectId'], row['updatedAt'], row['createdBy']) for row in data['results']]
     return '\n'.join(result)
 
 
@@ -108,7 +104,7 @@ def GetDefault():
     user     = getpass.getuser()
     username = user + '@12.calt.casc'
     password = '123456'
-    day_base = datetime.date.today() - datetime.timedelta(days=7) # 定位为一周前的日期
+    day_base = datetime.date.today() - datetime.timedelta(days=20) # 定位为20天前的日期
     year     = day_base.year
     month    = day_base.month
 
@@ -117,8 +113,7 @@ def GetDefault():
 
 def GetSaved(file):
     if not os.path.exists(file):
-        with open(file, 'w') as f:
-            f.write('')
+        open(file, 'w').close()
     with open(file) as f:
         s = f.read()
     return (s + '\n\n').split('\n')[:3]  # mac, username, password
@@ -128,89 +123,60 @@ def GetUserData(file):
     user_default = GetDefault()
     user_saved   = GetSaved(file)
     if user_saved[0] == user_default[0]:
-        pprint('读取用户信息成功：')
+        print('读取用户信息成功')
         user_data = user_saved + user_default[-2:]  # year, month
     else:
-        pprint('本机第一次使用，为您自动生成默认信息：')
+        print('本机第一次使用，自动生成默认信息')
         user_data = user_default
-    # return user_data  # for no check
-
-    pprint('用户名：%s\n密  码：%s\n自查年：%s\n自查月：%s'%tuple(user_data[1:]))
-
-    while input('请确认以上信息是否正确[y/n]：').lower() != 'y':  # GOOD!!! [y/n]确认
-        for i, key in enumerate(['用户名','密  码','自查年','自查月']):
-            # GOOD!!! 不变或输入新值
-            user_data[i+1] = input('请输入新的<%s>，保持不变<%s>请回车：'%(key, user_data[i+1])) or user_data[i+1]
-        pprint('用户名：%s\n密  码：%s\n自查年：%s\n自查月：%s'%tuple(user_data[1:]))
-
-    with open(file, 'w') as f:
-        f.write('\n'.join(user_data[:3]))  # mac, username, password
-
     return user_data  # mac, username, password, year, month
 
 
-#---------------------------------------------------------------------------
-# 主程序
-#---------------------------------------------------------------------------
+def SaveUserData(file, data):
+    with open(file, 'w') as f:
+        f.write('\n'.join(map(str, data)))  # mac, username, password
 
 
-def pprint(s):
-    time.sleep(0.3)
-    print('...\n')
-    print(s)
-
-
-def main():
-    # 启动
-    pprint('程序启动')
-    pprint('程序实现：\n复制最后一次填写的《十二所员工月度保密自查表》，提交新一月的自查表。')
-
-    # 获取基本信息
-    user_data = GetUserData('user.txt')  # mac, username, password, year, month
-
+def submit(username, password, year, month, n1, n2):
     # 登录
     try:
-        headers, loginJson = login(user_data[1], user_data[2])
+        headers, loginJson = login(username, password)
+        AnalysisLoginJson(loginJson)
     except:
-        pprint('登录失败，请检查用户名和密码输入是否正确。')
-        return
-
-    pprint('你好: %s %s'%(loginJson['departmentName'], loginJson['user']))
+        return '登录失败，请检查用户名和密码输入是否正确。'
 
     # 获取总表
     data = request('十二所员工月度保密自查表')
-    for row in data["results"]:
-        if row["人员账户"] == user_data[1]:
+    for row in data['results']:
+        if row['人员账户'] == username:
             break
-    latest_id = row["objectId"]
-    pprint('获取列表:')
-    pprint(AnalysisPageJson(data))
-    pprint('latest_id: %s'%latest_id)
+    latest_id = row['objectId']
+    print('获取列表:')
+    print(AnalysisPageJson(data))
+    print('latest_id: %s'%latest_id)
 
     # 获取历史提交数据
     data = request('十二所员工月度保密自查表/%s'%latest_id)
-    pprint('获取表单:')
-    pprint(dumps(data))
+    print('获取表单:')
+    print(dumps(data))
 
     # 提交数据
     data['objectId'] = 0
-    data["自查年"] = user_data[3]
-    data['自查月'] = user_data[4]
+    data['自查年'] = year
+    data['自查月'] = month
 
     # 修改保密次数和保密学时(字段s_1_4_1和s_1_4_2)
-    # GOOD!!! 不变或输入新值
-    data['s_1_4_1'] = int(input('请输入新的<保密次数>，保持不变<%d>请回车：'%data['s_1_4_1']) or data['s_1_4_1'])
-    data['s_1_4_2'] = int(input('请输入新的<保密学时>，保持不变<%d>请回车：'%data['s_1_4_2']) or data['s_1_4_2'])
-
+    data['s_1_4_1'] = n1
+    data['s_1_4_2'] = n2
 
     try:
         request('十二所员工月度保密自查表/%s'%latest_id, data=pack('formJson', data))
-        pprint('提交成功，请登录云表网页版查看确认信息正确。')
+        return '提交成功，请登录云表网页版查看确认信息正确。'
     except:
-        pprint('填写失败，请确认需要提交的"自查年"和"自查月"信息是否正确，如果当月记录已经存在则不能重复提交！')
+        return '填写失败，请确认需要提交的"自查年"和"自查月"信息是否正确，如果当月记录已经存在则不能重复提交！'
 
 
-
-main()
-input('\nPress Enter to finish:')
-
+if __name__ == '__main__':
+    mac, username, password, year, month = GetUserData('user.txt')
+    print(mac, username, password, year, month)
+    ret = submit(username, password, 2022, 3, 1, 1)
+    print(ret)
