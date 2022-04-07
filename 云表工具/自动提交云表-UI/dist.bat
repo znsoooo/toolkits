@@ -1,2 +1,2 @@
-pyinstaller -d bootloader -F eversheet.py
+pyinstaller -Fw main.py
 pause
