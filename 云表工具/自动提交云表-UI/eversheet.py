@@ -136,6 +136,22 @@ def SaveUserData(file, data):
         f.write('\n'.join(map(str, data)))  # mac, username, password
 
 
+def history(username, password):
+    # 登录
+    try:
+        headers, loginJson = login(username, password)
+        AnalysisLoginJson(loginJson)
+    except:
+        return '登录失败，请检查用户名和密码输入是否正确。'
+
+    # 获取总表
+    data = request('十二所员工月度保密自查表')
+    data = [(row['自查年'], row['自查月']) for row in data['results'] if row['人员账户'] == username]
+    data = [f'{y}年{m}月' for y, m in data]
+
+    return '已填：\n' + '\n'.join(data)
+    
+
 def submit(username, password, year, month, n1, n2):
     # 登录
     try:

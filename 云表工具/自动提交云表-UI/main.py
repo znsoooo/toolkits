@@ -13,8 +13,14 @@ class MyPanel(ui.MyPanel):
         self.parent = parent
         self.mac, *user = eversheet.GetUserData('user.txt')
         self.SetValues(user)
-        self.Bind(wx.EVT_BUTTON, self.OnSubmit, id=102)
+        self.Bind(wx.EVT_BUTTON, self.OnHistory, id=101)
+        self.Bind(wx.EVT_BUTTON, self.OnSubmit,  id=102)
         parent.Bind(wx.EVT_CLOSE, self.OnClose)
+
+    def OnHistory(self, evt):
+        values = self.GetValues()
+        ret = eversheet.history(*values[:2])
+        wx.MessageBox(ret)
 
     def OnSubmit(self, evt):
         values = self.GetValues()
