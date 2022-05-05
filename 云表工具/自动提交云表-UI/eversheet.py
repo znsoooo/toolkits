@@ -125,26 +125,26 @@ def SaveUserData(file, data):
         f.write('\n'.join(map(str, data)))  # mac, username, password
 
 
-def history(username, password):
+def history(name, pswd):
     # 登录
     try:
-        headers, loginJson = login(username, password)
+        headers, loginJson = login(name, pswd)
         PrintLogin(loginJson)
     except:
         return '登录失败，请检查用户名和密码输入是否正确。'
 
     # 获取总表
     data = request('十二所员工月度保密自查表')
-    data = [(row['自查年'], row['自查月']) for row in data['results'] if row['人员账户'] == username]
+    data = [(row['自查年'], row['自查月']) for row in data['results'] if row['人员账户'] == name]
     data = [f'{y}年{m}月' for y, m in data]
 
     return '已填：\n' + '\n'.join(data)
-    
 
-def submit(username, password, year, month, n1, n2):
+
+def submit(name, pswd, year, month, n1, n2):
     # 登录
     try:
-        headers, loginJson = login(username, password)
+        headers, loginJson = login(name, pswd)
         PrintLogin(loginJson)
     except:
         return '登录失败，请检查用户名和密码输入是否正确。'
@@ -152,7 +152,7 @@ def submit(username, password, year, month, n1, n2):
     # 获取总表
     data = request('十二所员工月度保密自查表')
     for row in data['results']:
-        if row['人员账户'] == username:
+        if row['人员账户'] == name:
             break
     id = row['objectId']
     print('获取列表:')
@@ -177,11 +177,28 @@ def submit(username, password, year, month, n1, n2):
         request(f'十二所员工月度保密自查表/{id}', data=pack('formJson', data))
         return '提交成功，请登录云表网页版查看确认信息正确。'
     except:
-        return '填写失败，请确认需要提交的"自查年"和"自查月"信息是否正确，如果当月记录已经存在则不能重复提交！'
+        return '提交失败，记录已存在，是否删除记录后重新提交？'
+
+
+def delete(name, pswd, year, month):
+    # 登录
+    try:
+        headers, loginJson = login(name, pswd)
+        PrintLogin(loginJson)
+    except:
+        return '登录失败，请检查用户名和密码输入是否正确。'
+
+    # 获取总表
+    data = request('十二所员工月度保密自查表')
+    ids = [row['objectId'] for row in data['results'] if row['人员账户'] == name and (row['自查年'], row['自查月']) == (year, month)]
+    for id in ids:
+        request(f'十二所员工月度保密自查表/{id}', method='delete')
+
+    return f'共删除表单{len(ids)}项。'
 
 
 if __name__ == '__main__':
-    mac, username, password, year, month = GetUserData('user.txt')
-    print(mac, username, password, year, month)
-    ret = submit(username, password, 2025, 3, 1, 1)
+    mac, name, pswd, year, month = GetUserData('user.txt')
+    print(mac, name, pswd, year, month)
+    ret = submit(name, pswd, 2025, 3, 1, 1)
     print(ret)
