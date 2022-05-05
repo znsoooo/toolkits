@@ -37,28 +37,17 @@ headers = {}
 #---------------------------------------------------------------------------
 
 
-def dumps(data):
-    res = json.dumps(data, ensure_ascii=0, indent=2)
-    return res
+md5   = lambda s: hashlib.md5(s.encode()).hexdigest().upper()
+pack  = lambda name, data: (name + '=' + json.dumps(data)).encode()
+dumps = lambda data: json.dumps(data, ensure_ascii=0, indent=2)
 
 
-def md5(s):
-    return hashlib.md5(s.encode()).hexdigest().upper()
-
-
-def request(relative_path, data=None):
-    url = BASE_URL + urllib.parse.quote_plus(relative_path).replace('%2F', '/')
-    request  = urllib.request.Request(url, headers=headers, data=data)
-    response = urllib.request.urlopen(request, timeout=30)
+def request(path, data=None, method=None):
+    url = BASE_URL + urllib.parse.quote(path)
+    request  = urllib.request.Request(url, data, headers, method=method)
+    response = urllib.request.urlopen(request)
     content  = response.read().decode()
-    data = json.loads(content)
-    return data
-
-
-def pack(name, data):
-    data = json.dumps(data).replace(' ', '')
-    data = name+'='+urllib.parse.quote_plus(data)
-    return data.encode()
+    return json.loads(content) if content else None
 
 
 def login(username, password):
@@ -80,13 +69,13 @@ def login(username, password):
 #---------------------------------------------------------------------------
 
 
-def AnalysisLoginJson(loginJson):
+def PrintLogin(loginJson):
     print('你好: %s %s'%(loginJson['departmentName'], loginJson['user']))
 
 
-def AnalysisPageJson(data):
-    result = ['%s,%s,%s'%(row['objectId'], row['updatedAt'], row['createdBy']) for row in data['results']]
-    return '\n'.join(result)
+def PrintHistory(data):
+    for row in data['results']:
+        print(f"{row['objectId']:6}, {row['updatedAt']}, {row['createdBy']}, {row['自查年']}, {row['自查月']}")
 
 
 #---------------------------------------------------------------------------
@@ -140,7 +129,7 @@ def history(username, password):
     # 登录
     try:
         headers, loginJson = login(username, password)
-        AnalysisLoginJson(loginJson)
+        PrintLogin(loginJson)
     except:
         return '登录失败，请检查用户名和密码输入是否正确。'
 
@@ -156,7 +145,7 @@ def submit(username, password, year, month, n1, n2):
     # 登录
     try:
         headers, loginJson = login(username, password)
-        AnalysisLoginJson(loginJson)
+        PrintLogin(loginJson)
     except:
         return '登录失败，请检查用户名和密码输入是否正确。'
 
@@ -165,13 +154,13 @@ def submit(username, password, year, month, n1, n2):
     for row in data['results']:
         if row['人员账户'] == username:
             break
-    latest_id = row['objectId']
+    id = row['objectId']
     print('获取列表:')
-    print(AnalysisPageJson(data))
-    print('latest_id: %s'%latest_id)
+    PrintHistory(data)
+    print(f'最近提交: {id}')
 
     # 获取历史提交数据
-    data = request('十二所员工月度保密自查表/%s'%latest_id)
+    data = request(f'十二所员工月度保密自查表/{id}')
     print('获取表单:')
     print(dumps(data))
 
@@ -185,7 +174,7 @@ def submit(username, password, year, month, n1, n2):
     data['s_1_4_2'] = n2
 
     try:
-        request('十二所员工月度保密自查表/%s'%latest_id, data=pack('formJson', data))
+        request(f'十二所员工月度保密自查表/{id}', data=pack('formJson', data))
         return '提交成功，请登录云表网页版查看确认信息正确。'
     except:
         return '填写失败，请确认需要提交的"自查年"和"自查月"信息是否正确，如果当月记录已经存在则不能重复提交！'
@@ -194,5 +183,5 @@ def submit(username, password, year, month, n1, n2):
 if __name__ == '__main__':
     mac, username, password, year, month = GetUserData('user.txt')
     print(mac, username, password, year, month)
-    ret = submit(username, password, 2022, 3, 1, 1)
+    ret = submit(username, password, 2025, 3, 1, 1)
     print(ret)
