@@ -50,7 +50,8 @@ class MyPanel(ui.MyPanel):
     def OnClose(self, evt):
         name, pswd, *_ = self.GetValues()
         data = [self.mac, name, pswd]
-        eversheet.SaveUserData('user.txt', data)
+        if name and pswd:
+            eversheet.SaveUserData('user.txt', data)
         self.parent.Destroy()
 
 
