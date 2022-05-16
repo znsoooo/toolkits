@@ -1,5 +1,6 @@
 import wx
 
+import qr
 import ui
 import eversheet
 
@@ -7,14 +8,14 @@ __ver__ = 'v0.4.0'
 
 
 class Bingo(wx.Dialog):
-    def __init__(self, parent, bs):
-        wx.Dialog.__init__(self)
-        self.Create(parent, -1, 'Powered by lsx!')
-        bmp = wx.Bitmap(wx.Image('donate.png'))
-        img = wx.StaticBitmap(self, -1, bmp)
+    def __init__(self):
+        wx.Dialog.__init__(self, None, title='Powered by lsx!')
+        img = wx.Image('donate.png')
+        bmp = wx.StaticBitmap(self, -1, wx.Bitmap(img))
         self.Fit()
         self.Center()
         self.ShowModal()
+        self.Destroy()
 
 
 class MyPanel(ui.MyPanel):
@@ -27,6 +28,15 @@ class MyPanel(ui.MyPanel):
         self.Bind(wx.EVT_BUTTON, self.OnSubmit,  id=102)
         parent.Bind(wx.EVT_CLOSE, self.OnClose)
 
+        self.widgets[0].Bind(wx.EVT_KEY_DOWN, self.OnKeyDown)
+
+    def OnKeyDown(self, evt):
+        if evt.ControlDown() and evt.AltDown() and evt.GetKeyCode() == ord('Q'):
+            if not self.widgets[0].GetValue():
+                self.parent.Destroy()
+                qr.MyFrame()
+        evt.Skip()
+
     def OnHistory(self, evt):
         ret = eversheet.history(*self.GetValues()[:2])
         wx.MessageBox(ret)
@@ -34,7 +44,7 @@ class MyPanel(ui.MyPanel):
     def OnSubmit(self, evt):
         values = self.GetValues()
         if not values[0]:
-            return Bingo(self, 1)
+            return Bingo()
         ret = eversheet.submit(*values)
         if ret.startswith('提交失败'):
             if wx.YES == wx.MessageBox(ret, style=wx.YES_NO):
