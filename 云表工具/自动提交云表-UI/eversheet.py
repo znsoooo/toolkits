@@ -166,6 +166,8 @@ def submit(name, pswd, year, month, n1, n2):
     for row in data['results']:
         if row['人员账户'] == name:
             break
+    else:
+        return '未找到历史记录，请完成至少1次提交后使用本工具。'
     id = row['objectId']
     print('获取列表:')
     PrintHistory(data)
