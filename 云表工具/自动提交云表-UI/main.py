@@ -7,7 +7,7 @@ import qr
 import ui
 import eversheet
 
-__ver__ = 'v0.4.0'
+__ver__ = 'v0.4.1'
 
 
 class Bingo(wx.Dialog):
@@ -42,6 +42,7 @@ class MyPanel(ui.MyPanel):
 
     def OnHistory(self, evt):
         ret = eversheet.history(*self.GetValues()[:2])
+        print(ret)
         wx.MessageBox(ret)
 
     def OnSubmit(self, evt):
@@ -80,7 +81,7 @@ if __name__ == '__main__':
     IMG_DONATE = 'donate.png'
     if hasattr(sys, '_MEIPASS'):
         IMG_DONATE = os.path.join(sys._MEIPASS, IMG_DONATE)
-        
+
     app = wx.App()
     locale = wx.Locale(wx.LANGUAGE_ENGLISH) # for read PNG
     frm = MyDialog('保密云表自查 %s' % __ver__, (240, 260))

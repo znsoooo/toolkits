@@ -135,10 +135,22 @@ def history(name, pswd):
 
     # 获取总表
     data = request('十二所员工月度保密自查表')
-    data = [(row['自查年'], row['自查月']) for row in data['results'] if row['人员账户'] == name]
-    data = [f'{y}年{m}月' for y, m in data]
 
-    return '已填：\n' + '\n'.join(data)
+    # 选取年月信息
+    table = {}
+    total = 0
+    for row in data['results']:
+        if row['人员账户'] == name:
+            total += 1
+            table.setdefault(row['自查年'], []).append(row['自查月'])
+
+    # 拼接字符串
+    lines = []
+    for year, months in sorted(table.items()):
+        lines.append(f'{year}年：' + '、'.join(f'{month}月' for month in sorted(months)) + '。')
+    text = f'已填{total}个月\n\n' + '\n'.join(lines)
+
+    return text
 
 
 def submit(name, pswd, year, month, n1, n2):
