@@ -5,6 +5,17 @@
 # 时间基准改为定位为20天前的日期
 # 支持修改保密次数和保密学时(字段s_1_4_1和s_1_4_2)
 
+# v0.4.0
+# 查询历史记录
+# 覆盖提交历史数据
+
+# v0.4.1
+# 汇聚显示已填年月信息
+# 没有提交记录时返回错误提示
+
+# v0.4.2
+# 按用户名筛选获取历史提交数据
+
 # feature:
 # 自动获取当前用户名填充为账号
 # 默认填充当前年份和月份
@@ -75,7 +86,7 @@ def PrintLogin(loginJson):
 
 def PrintHistory(data):
     for row in data['results']:
-        print(f"{row['objectId']:6}, {row['updatedAt']}, {row['createdBy']}, {row['自查年']}, {row['自查月']}")
+        print(f" | {row['objectId']} | {row['updatedAt']} | {row['自查年']} | {row['自查月']:02} | {row['createdBy']} |")
 
 
 #---------------------------------------------------------------------------
@@ -125,6 +136,12 @@ def SaveUserData(file, data):
         f.write('\n'.join(map(str, data)))  # mac, username, password
 
 
+def RequestUserData(name):
+    filter_json = {'filter': [{'expressionList': [{'operator': '$e', 'value': name}], 'filterField': '人员账户'}]}
+    data = request('十二所员工月度保密自查表', data=pack('formJson', filter_json))
+    return data
+
+
 def history(name, pswd):
     # 登录
     try:
@@ -134,20 +151,19 @@ def history(name, pswd):
         return '登录失败，请检查用户名和密码输入是否正确。'
 
     # 获取总表
-    data = request('十二所员工月度保密自查表')
+    data = RequestUserData(name)
 
     # 选取年月信息
     table = {}
-    total = 0
     for row in data['results']:
-        if row['人员账户'] == name:
-            total += 1
-            table.setdefault(row['自查年'], []).append(row['自查月'])
+        table.setdefault(row['自查年'], []).append(row['自查月'])
 
     # 拼接字符串
     lines = []
     for year, months in sorted(table.items()):
         lines.append(f'{year}年：' + '、'.join(f'{month}月' for month in sorted(months)) + '。')
+
+    total = len(data['results'])
     text = f'已填{total}个月\n\n' + '\n'.join(lines)
 
     return text
@@ -162,13 +178,11 @@ def submit(name, pswd, year, month, n1, n2):
         return '登录失败，请检查用户名和密码输入是否正确。'
 
     # 获取总表
-    data = request('十二所员工月度保密自查表')
-    for row in data['results']:
-        if row['人员账户'] == name:
-            break
-    else:
+    data = RequestUserData(name)
+    if not data['results']:
         return '未找到历史记录，请完成至少1次提交后使用本工具。'
-    id = row['objectId']
+
+    id = data['results'][0]['objectId']
     print('获取列表:')
     PrintHistory(data)
     print(f'最近提交: {id}')
@@ -203,8 +217,8 @@ def delete(name, pswd, year, month):
         return '登录失败，请检查用户名和密码输入是否正确。'
 
     # 获取总表
-    data = request('十二所员工月度保密自查表')
-    ids = [row['objectId'] for row in data['results'] if row['人员账户'] == name and (row['自查年'], row['自查月']) == (year, month)]
+    data = RequestUserData(name)
+    ids = [row['objectId'] for row in data['results'] if (row['自查年'], row['自查月']) == (year, month)]
     for id in ids:
         request(f'十二所员工月度保密自查表/{id}', method='delete')
 
@@ -213,6 +227,7 @@ def delete(name, pswd, year, month):
 
 if __name__ == '__main__':
     mac, name, pswd, year, month = GetUserData('user.txt')
-    print(mac, name, pswd, year, month)
-    ret = submit(name, pswd, 2025, 3, 1, 1)
-    print(ret)
+    print((mac, name, pswd, year, month))
+    print(history(name, pswd))
+    print(submit(name, pswd, 1949, 10, 1, 1))
+    print(delete(name, pswd, 1949, 10))

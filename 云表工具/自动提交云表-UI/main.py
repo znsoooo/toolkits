@@ -7,7 +7,7 @@ import qr
 import ui
 import eversheet
 
-__ver__ = 'v0.4.1'
+__ver__ = 'v0.4.2'
 
 
 class Bingo(wx.Dialog):
