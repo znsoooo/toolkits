@@ -229,5 +229,5 @@ if __name__ == '__main__':
     mac, name, pswd, year, month = GetUserData('user.txt')
     print((mac, name, pswd, year, month))
     print(history(name, pswd))
-    print(submit(name, pswd, 1949, 10, 1, 1))
+    print(submit(name, pswd, 1949, 10, 2, 2.5))
     print(delete(name, pswd, 1949, 10))

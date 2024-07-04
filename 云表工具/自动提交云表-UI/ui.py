@@ -10,7 +10,7 @@ class MyPanel(wx.Panel):
         w3 = wx.SpinCtrl(self, min=2000, max=2099)
         w4 = wx.SpinCtrl(self, min=1, max=12)
         w5 = wx.SpinCtrl(self, value='1', min=0, max=99)
-        w6 = wx.SpinCtrl(self, value='1', min=0, max=99)
+        w6 = wx.SpinCtrlDouble(self, value='1', min=0, max=99)
 
         self.widgets = [w1, w2, w3, w4, w5, w6]
         self.names   = ['用户名', '密码', '自查年', '自查月', '保密次数', '保密学时']
