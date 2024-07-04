@@ -7,13 +7,13 @@ import qr
 import ui
 import eversheet
 
-__ver__ = 'v0.4.2'
+__ver__ = 'v0.4.3'
 
 
 class Bingo(wx.Dialog):
     def __init__(self):
         wx.Dialog.__init__(self, None, title='Powered by lsx!')
-        img = wx.Image(IMG_DONATE)
+        img = wx.Image(__file__ + '/../donate.png')
         bmp = wx.StaticBitmap(self, -1, wx.Bitmap(img))
         self.Fit()
         self.Center()
@@ -78,10 +78,6 @@ class MyDialog(wx.Dialog):
 
 
 if __name__ == '__main__':
-    IMG_DONATE = 'donate.png'
-    if hasattr(sys, '_MEIPASS'):
-        IMG_DONATE = os.path.join(sys._MEIPASS, IMG_DONATE)
-
     app = wx.App()
     locale = wx.Locale(wx.LANGUAGE_ENGLISH) # for read PNG
     frm = MyDialog('保密云表自查 %s' % __ver__, (240, 260))
