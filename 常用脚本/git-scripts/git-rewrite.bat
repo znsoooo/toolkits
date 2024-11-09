@@ -2,7 +2,7 @@
 git stash -q
 echo ----------
 set first=
-for /f "tokens=1,2,3" %%i in ('git log --reverse --format^="%%H %%at %%ct"') do (
+for /f "tokens=1,2,3" %%i in ('git log --reverse --format^="%%h %%at %%ct"') do (
     set GIT_COMMITTER_DATE=%%j
     if defined first (
         echo ----------
@@ -16,3 +16,6 @@ for /f "tokens=1,2,3" %%i in ('git log --reverse --format^="%%H %%at %%ct"') do 
 echo ----------
 git stash pop -q
 pause
+
+:: overwrite author:
+:: git commit --amend --no-edit --quiet --author "Shixian Li <lsx7@sina.com>"

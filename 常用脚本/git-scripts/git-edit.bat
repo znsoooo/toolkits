@@ -1,6 +1,6 @@
 @echo off
 
-git log --reverse --format="%%H %%aI %%s" > git-log.txt
+git log --reverse --format="%%h %%aI %%s" > git-log.txt
 git-log.txt
 pause
 
@@ -19,3 +19,6 @@ for /f "tokens=1,2" %%i in (git-log.txt) do (
 )
 git stash pop -q
 pause
+
+:: overwrite author:
+:: git commit --amend --no-edit --quiet --author "Shixian Li <lsx7@sina.com>"
