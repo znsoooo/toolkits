@@ -1,5 +1,3 @@
-:: update 20240328
-
 @echo off
 chcp 65001 > nul
 
