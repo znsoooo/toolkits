@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 > nul
 
-git log --reverse --format="%%h %%aI %%s" > git-log.txt
+git log --reverse --format="%%h %%aI %%s" %1 > git-log.txt
 git-log.txt
 pause
 

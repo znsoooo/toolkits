@@ -2,7 +2,7 @@
 git stash -q
 echo ----------
 set first=
-for /f "tokens=1,2,3" %%i in ('git log --reverse --format^="%%h %%at %%ct"') do (
+for /f "tokens=1,2,3" %%i in ('git log --reverse --format^="%%h %%at %%ct" %1') do (
     set GIT_COMMITTER_DATE=%%j
     if defined first (
         echo ----------
