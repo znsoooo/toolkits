@@ -1,3 +1,5 @@
+import time
+
 import util
 
 
@@ -13,28 +15,29 @@ WALK_ROOTS = [
     # '/storage/emulated/0/Download',
 ]
 
-CHUNK = 1 << 20  # 分块 1MB
-
 # ----- 配置区 -----
 
+def InputDays():
+    text = input('同步最近多少天的文件: ').strip()
+    return int(text) if text else 0
 
-def SendFile(tcp, path: str, size: int, chunk: int = CHUNK):
-    """按 size 字节流式发送内容，1MB/次"""
-    sent = 0
-    with open(path, 'rb') as f:
-        while sent < size:
-            data = f.read(chunk)
-            if not data:
-                break
-            tcp.send(data)
-            sent += len(data)
+
+def InputHost(default=''):
+    host = input('请输入PC端IP地址: ').strip()
+    tail = host.split('.') if host else []
+    head = default.split('.') if default else []
+    return '.'.join(head[:max(0, 4 - len(tail))] + tail)
 
 
 def main():
     port, roots = SERVER_PORT, WALK_ROOTS
+    ips = util.LocalIps()
+    local_ip = ips[0] if ips else ''
     util.PrintLocalIps()
 
-    host = input('请输入PC端IP地址: ').strip()
+    host = InputHost(local_ip)
+    days = InputDays()
+    deadline = time.time() - days * 86400   # 仅同步 mtime >= deadline 的文件；days=0 时不过滤
 
     print(f'连接 {host}:{port} ...')
     tcp = util.Tcp(host, port)
@@ -43,6 +46,8 @@ def main():
 
     for file in util.Walk(roots, exts=util.MEDIA_EXTS, hidden=False):
         if file.size == 0:
+            continue
+        if days and file.mtime < deadline:
             continue
 
         tcp.sendlong('FILE')
@@ -59,7 +64,7 @@ def main():
             st['skip_size'] += file.size
             print(f'跳过: {relpath} ({util.HumanSize(file.size)})')
         elif cmd == 'DATA':
-            SendFile(tcp, file.path, file.size)
+            tcp.sendfile(file.path, file.size)
             tcp.sendlong(str(file.mtime))
             st['sent'] += 1
             st['sent_size'] += file.size

@@ -54,6 +54,25 @@ class Tcp:
             data.extend(chunk)
         return bytes(data)
 
+    def sendfile(self, path, size, chunk=1<<20):
+        sent = 0
+        with open(path, 'rb') as f:
+            while sent < size:
+                data = f.read(chunk)
+                if not data:
+                    break
+                self.send(data)
+                sent += len(data)
+
+    def recvfile(self, path, size):
+        received = 0
+        os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
+        with open(path, 'wb') as f:
+            while received < size:
+                chunk = self.recv(size - received)
+                f.write(chunk)
+                received += len(chunk)
+
 
 class File:
     def __init__(self, path: str):

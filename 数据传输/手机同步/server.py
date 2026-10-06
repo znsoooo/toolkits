@@ -24,7 +24,7 @@ NEW_DIR = time.strftime('%Y%m%d_%H%M%S')
 
 
 def BuildDatabase(roots):
-    database = list(util.Walk(roots))
+    database = list(util.Walk(roots, exts=util.MEDIA_EXTS, hidden=False))
     print(f'已扫描本机文件 {len(database)} 个，建立索引完成。')
     return database
 
@@ -36,19 +36,6 @@ def UniquePath(path):
         path = f'{root}_{i}{ext}'
         i += 1
     return path
-
-
-def RecvFile(tcp, relpath: str, size: int):
-    """把客户端发来的内容落盘到 <落盘目录>/<相对路径>，还原文件最后修改时间"""
-    file = util.File(UniquePath(os.path.join(NEW_DIR, relpath)))
-    os.makedirs(file.dir, exist_ok=True)
-    with open(file.path, 'wb') as f:
-        received = 0
-        while received < size:
-            chunk = tcp.recv(size - received)
-            f.write(chunk)
-            received += len(chunk)
-    file.mtime = float(tcp.recvlong())
 
 
 def RecvFiles(tcp, database):
@@ -73,7 +60,8 @@ def RecvFiles(tcp, database):
                 break
         else:
             tcp.sendlong('DATA')
-            RecvFile(tcp, relpath, size)
+            tcp.recvfile(UniquePath(os.path.join(NEW_DIR, relpath)), size)
+            file.mtime = float(tcp.recvlong())
             st['sent'] += 1
             st['sent_size'] += size
             print(f'接收: {relpath} ({util.HumanSize(size)})')
